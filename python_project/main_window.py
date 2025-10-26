@@ -4,10 +4,12 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp, QTabWidget
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from npc_editor import NpcEditor
 from quest_editor import QuestEditor
+from gsf_editor import GsfEditor
 from mcf_coder import decrypt_area
 from mcf_decompiler import CMcfDecompiler
 from npc_parser import NpcParser
 from quest_parser import QuestParser
+from gsf_coder import GsfCoder
 
 
 class MainWindow(QMainWindow):
@@ -36,10 +38,12 @@ class MainWindow(QMainWindow):
         self.tabs = QTabWidget()
         self.npc_editor_tab = NpcEditor()
         self.quest_editor_tab = QuestEditor()
+        self.gsf_editor_tab = GsfEditor()
         self.script_editor_tab = QWidget()
 
         self.tabs.addTab(self.npc_editor_tab, "NPC Editor")
         self.tabs.addTab(self.quest_editor_tab, "Quest Editor")
+        self.tabs.addTab(self.gsf_editor_tab, "GSF Editor")
         self.tabs.addTab(self.script_editor_tab, "Script Editor")
 
         self.setCentralWidget(self.tabs)
@@ -50,19 +54,24 @@ class MainWindow(QMainWindow):
 
     def open_file(self):
         options = QFileDialog.Options()
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open MCF File", "", "MCF Files (*.mcf)", options=options)
+        file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "", "MCF Files (*.mcf);;GSF Files (*.gsf)", options=options)
         if file_name:
             with open(file_name, 'rb') as f:
                 data = f.read()
-            decrypted_data = decrypt_area(data)
-            decompiler = CMcfDecompiler()
-            decompiler.decompile(decrypted_data)
-            npc_parser = NpcParser()
-            npc_parser.parse(decompiler.functions)
-            self.populate_npc_tree(npc_parser.npcs)
-            quest_parser = QuestParser()
-            quest_parser.parse(decompiler.functions)
-            self.populate_quest_tree(quest_parser.quests)
+            if file_name.endswith('.mcf'):
+                decrypted_data = decrypt_area(data)
+                decompiler = CMcfDecompiler()
+                decompiler.decompile(decrypted_data)
+                npc_parser = NpcParser()
+                npc_parser.parse(decompiler.functions)
+                self.populate_npc_tree(npc_parser.npcs)
+                quest_parser = QuestParser()
+                quest_parser.parse(decompiler.functions)
+                self.populate_quest_tree(quest_parser.quests)
+            elif file_name.endswith('.gsf'):
+                gsf_coder = GsfCoder('gsfStruct-release.xml')
+                parsed_data = gsf_coder.parse_gsf(file_name.split('/')[-1].replace('.gsf', ''), data)
+                self.gsf_editor_tab.populate_data(parsed_data)
 
     def populate_npc_tree(self, npcs):
         self.npcs = npcs
