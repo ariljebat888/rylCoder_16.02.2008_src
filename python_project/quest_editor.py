@@ -1,5 +1,6 @@
 
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QTreeView, QGroupBox, QVBoxLayout, QLineEdit, QLabel, QFormLayout, QCheckBox, QComboBox, QTextEdit
+from quest_parser import QLine
 
 
 class QuestEditor(QWidget):
@@ -75,3 +76,36 @@ class QuestEditor(QWidget):
         main_layout.addWidget(self.quest_details, 2)
 
         self.setLayout(main_layout)
+
+    def populate_quest_details(self, quest):
+        self.quest_id.setText(str(quest.id))
+        quest_start_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EQuestStart]
+        if quest_start_lines:
+            quest_start_line = quest_start_lines[0]
+            self.quest_min_lvl.setText(str(quest_start_line.params[1].value))
+            self.quest_max_lvl.setText(str(quest_start_line.params[2].value))
+
+        quest_title_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EQuestTitle]
+        if quest_title_lines:
+            self.quest_title_name.setText(quest_title_lines[0].params[0].value)
+
+        quest_level_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EQuestLevel]
+        if quest_level_lines:
+            self.quest_title_level.setText(quest_level_lines[0].params[0].value)
+
+        quest_short_desc_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EQuestShortDesc]
+        if quest_short_desc_lines:
+            self.quest_title_short_desc.setText(quest_short_desc_lines[0].params[0].value)
+
+        quest_award_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EQuestAward]
+        if quest_award_lines:
+            self.quest_title_award.setText(quest_award_lines[0].params[0].value)
+
+        quest_desc_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EQuestDesc]
+        if quest_desc_lines:
+            self.quest_title_desc.setText(quest_desc_lines[0].params[0].value)
+
+        self.quest_phases.clear()
+        add_phase_lines = [line for line in quest.i_lines if line.type == QLine.KnownType.EAddPhase]
+        for line in add_phase_lines:
+            self.quest_phases.addItem(line.params[2].value)

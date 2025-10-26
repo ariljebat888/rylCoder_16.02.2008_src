@@ -1,7 +1,5 @@
 
 import sys
-
-import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp, QTabWidget, QWidget, QFileDialog
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from npc_editor import NpcEditor
@@ -81,11 +79,18 @@ class MainWindow(QMainWindow):
         self.npc_editor_tab.populate_npc_details(npc)
 
     def populate_quest_tree(self, quests):
+        self.quests = quests
         model = QStandardItemModel()
         self.quest_editor_tab.quest_tree.setModel(model)
         for quest in quests:
             item = QStandardItem(quest.name)
             model.appendRow(item)
+        self.quest_editor_tab.quest_tree.selectionModel().selectionChanged.connect(self.quest_selection_changed)
+
+    def quest_selection_changed(self, selected, deselected):
+        index = selected.indexes()[0]
+        quest = self.quests[index.row()]
+        self.quest_editor_tab.populate_quest_details(quest)
 
 
 if __name__ == '__main__':
