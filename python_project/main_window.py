@@ -1,5 +1,6 @@
 
 import sys
+import os
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp, QTabWidget, QWidget, QFileDialog
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from npc_editor import NpcEditor
@@ -54,11 +55,15 @@ class MainWindow(QMainWindow):
 
     def open_file(self):
         options = QFileDialog.Options()
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "", "MCF Files (*.mcf);;GSF Files (*.gsf)", options=options)
+        file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "", "All Files (*);;MCF Files (*.mcf);;GSF Files (*.gsf)", options=options)
         if file_name:
             with open(file_name, 'rb') as f:
                 data = f.read()
-            if file_name.endswith('.mcf'):
+
+            base_name = os.path.basename(file_name)
+            file_title, file_ext = os.path.splitext(base_name)
+
+            if file_ext.lower() == '.mcf':
                 decrypted_data = decrypt_area(data)
                 decompiler = CMcfDecompiler()
                 decompiler.decompile(decrypted_data)
@@ -68,9 +73,9 @@ class MainWindow(QMainWindow):
                 quest_parser = QuestParser()
                 quest_parser.parse(decompiler.functions)
                 self.populate_quest_tree(quest_parser.quests)
-            elif file_name.endswith('.gsf'):
+            elif file_ext.lower() == '.gsf':
                 gsf_coder = GsfCoder('gsfStruct-release.xml')
-                parsed_data = gsf_coder.parse_gsf(file_name.split('/')[-1].replace('.gsf', ''), data)
+                parsed_data = gsf_coder.parse_gsf(file_title, data)
                 self.gsf_editor_tab.populate_data(parsed_data)
 
     def populate_npc_tree(self, npcs):

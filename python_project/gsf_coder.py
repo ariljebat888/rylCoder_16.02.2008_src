@@ -16,7 +16,13 @@ class GsfCoder:
 
     def parse_gsf(self, file_name, gsf_data):
         decrypted_data = decrypt_gsf(gsf_data)
-        file_def = self.root.find(f".//file[@name='{file_name}']")
+
+        file_def = None
+        for f in self.root.findall(".//file"):
+            if f.get("name").lower() == file_name.lower():
+                file_def = f
+                break
+
         if file_def is None:
             raise ValueError(f"File definition not found for '{file_name}'")
 
