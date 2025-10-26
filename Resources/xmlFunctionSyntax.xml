@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<syntax>
+  <ryl version="2">
+    <mcf type="1">
+      <!-- NPCscript.mcf -->
+      <func name="AddItem" parcount="5" desc="Add a new item to NPC shop">
+        <param type="int" name="NPC id" desc="The NPC ID to who's shop to add current item" />
+        <param type="int" name="Shop" desc="If the NPC has multiple shops then each shop has its id starting from 0. Default is 0. Reference to AddPopup();" />
+        <param type="int" name="Tab" desc="Tab ID. From 0 to 3" />
+        <param type="int" name="Page" desc="Page ID. Starting from 0" />
+        <param type="int" name="Item" desc="Item ID. Reference to itemscript.gsf" />
+      </func>
+      <func name="AddDialog" parcount="4" desc="Add a new dialogue to the NPC (opens when clicked on 'Talk To')">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this dialogue" />
+        <param type="int" name="Page" desc="The page number of the current npc's dialogue. Default 1" />
+        <param type="int" name="Unknown" desc="Can be the size of the dialog. Or the template window to use." />
+        <param type="string" name="Text" desc="The message to add to this dialogue" />
+      </func>
+      <func name="AddPopup" parcount="7" desc="Add a new menu item to the NPC's menu when clicking on it in game">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this popup" />
+        <param type="int" name="Command" desc="The type of the popup. What happens if its clicked. 0x2710 means to open the dialogue, 0x191 means to open a shop." />
+        <param type="int" name="Params" desc="Subtype of the popup. If type is dialogue then this should be 0, if its a shop then the kind of the shop(0x3E akkan armor)" />
+        <param type="string" name="Text" desc="Text to show in the menu" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="int" name="Class" desc="Class who can see this option. 1-fighter, 2-rogue, 4-mage, 8-acolyte, 0x10000-combatant, 0x20000-officiator, 0xFF0FFF-everyone" />
+      </func>
+      <func name="AddQuest" parcount="2" desc="Add a quest starting point to a NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this quest" />
+        <param type="int" name="Quest" desc="The quest ID" />
+      </func>
+      <func name="AddQuestWords" parcount="3" desc="Add green message to NPC head if the quest is available">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this message" />
+        <param type="int" name="Quest" desc="The quest ID. If the quest comes avalable to the player the text is shown" />
+        <param type="string" name="Text" desc="The message to show" />
+      </func>
+      <func name="AddWords" parcount="2" desc="Add a message to NPC which is displayed in chat">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this message" />
+        <param type="string" name="Text" desc="The message to show" />
+      </func>
+      <func name="AddZoneMove" parcount="5" desc="Set the target position of a zone teleport to a NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to set on this position" />
+        <param type="int" name="Zone" desc="Zone ID where the player is moved to" />
+        <param type="float" name="X" desc="X cordinate (e.g. from the left side of the map)" />
+        <param type="float" name="Y" desc="Y cordinate (e.g. the height)" />
+        <param type="float" name="Z" desc="Z cordinate (e.g. from the bottom of the map)" />
+      </func>
+      <func name="SetDropBase" parcount="7" desc="Set the drop base of random EQ shop">
+        <param type="int" name="NPC id" desc="The NPC ID to who's shop it apply's" />
+        <param type="int" name="Unknown" desc="Seems to be something's id (have seen 0 or 1)" />
+        <param type="int" name="A" desc="A grade" />
+        <param type="int" name="B" desc="B grade" />
+        <param type="int" name="C" desc="C grade" />
+        <param type="int" name="D" desc="D grade" />
+        <param type="int" name="F" desc="F grade" />
+      </func>
+      <func name="SetDropGrade" parcount="7" desc="Set the drop grade(chance) of random EQ shop">
+        <param type="int" name="NPC id" desc="The NPC ID to who's shop it apply's" />
+        <param type="int" name="Unknown" desc="Seems to be something's id (have seen 0 or 1)" />
+        <param type="int" name="A" desc="A grade" />
+        <param type="int" name="B" desc="B grade" />
+        <param type="int" name="C" desc="C grade" />
+        <param type="int" name="D" desc="D grade" />
+        <param type="int" name="F" desc="F grade" />
+      </func>
+      <func name="SetNPC" parcount="6" desc="Add a new NPC">
+        <param type="int" name="Zone" desc="Zone ID where to add it" />
+        <param type="int" name="NPC id" desc="The Unique NPC ID" />
+        <param type="int" name="Unknown" desc="Seems to be always the same 0x10000001" />
+        <param type="bool" name="Unknown" desc="Seems to be false always" />
+        <param type="string" name="Texture" desc="Texture/model of the NPC" />
+        <param type="string" name="Name" desc="Name\\Description of the NPC" />
+      </func>
+      <func name="SetPosition" parcount="5" desc="Set the position of a NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to set on this position" />
+        <param type="float" name="Dir" desc="Direction of the NPC where he is facing" />
+        <param type="float" name="X" desc="X cordinate (e.g. from the left side of the map)" />
+        <param type="float" name="Y" desc="Y cordinate (e.g. the height)" />
+        <param type="float" name="Z" desc="Z cordinate (e.g. from the bottom of the map)" />
+      </func>
+      <func name="SetNPCAttribute" parcount="3" desc="Set attributes of the NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to apply these attributes" />
+        <param type="int" name="Type" desc="NPC type / How is it showed on the mini map (0xB-weapon, 0x13-vault, 0x10 Trainer)" />
+        <param type="int" name="Nation" desc="Nation of the NPC. 0-neutral, 1-human, 2-akkan, 3-pirate" />
+      </func>
+    </mcf>
+    <mcf type="2">
+      <!-- Quest.mcf -->
+      <func name="QuestStart" parcount="7" desc="Quest start tag" level="1" siblings="-1">
+        <param type="int" name="Quest ID" desc="Unique ID of the quest. Starting with a F means that this quest can't be deleted" />
+        <param type="int" name="Min lvl" desc="The minimum level the player has to be to do the quest" />
+        <param type="int" name="Max lvl" desc="The maximum level the player can be to do the quest" />
+        <param type="int" name="Class" desc="0x000FFF - Humans, 0xFF0000 - Akkans, 0xFF0FFF - all; 10 defender, 20 warrior, 40 sin, 80 arch, 100 sourc, 200 ench, 400 priest, 800 cleric. Akkans are 0x1..." />
+        <param type="int" name="Existsing quest" desc="The ID of the quest the player has to have to do the quest" />
+        <param type="int" name="Nation" desc="0-all, 1-humans, 2-akkans, 3-pirates" />
+        <param type="bool" name="Unknown" desc="" />
+      </func>
+      <func name="QuestEnd" parcount="0" desc="Quest End tag" level="1" siblings="0" />
+      <func name="QuestSkillPointBonus" parcount="1" desc="Gives the player Skillpoints">
+        <param type="int" name="amount" desc="Number of Skillpoints to add to the player" />
+      </func>
+      <func name="QuestType" parcount="2" desc="Specifies the quest type" level="2" siblings="0">
+        <param type="int" name="Quest Type" desc="Talk to npc=0, Use a item=1, Go to some area=2" />
+        <param type="int" name="Party Type" desc="Single=0, Party=1" />
+      </func>
+      <!--
+      <func name="QuestArea" parcount="2" desc="Type of Quest">
+        <param type="int" name="Quest Type" desc="Quest type NPC=0, ITEM=1, AREA=2" />
+        <param type="int" name="Party Type" desc="Quest type NORMAL=0, PARTY=1" />
+      </func>-->
+      <func name="QuestTitle" parcount="1" desc="Quest title, has to be within 11 chars" level="2" siblings="0">
+        <param type="string" name="Title" desc="Quest title (11 chars or less)" />
+      </func>
+      <func name="QuestDesc" parcount="1" desc="Conversation message when NPC asks for a quest" level="2" siblings="0">
+        <param type="string" name="Text" desc="Conversation message when NPC asks for a quest" />
+      </func>
+      <func name="QuestShortDesc" parcount="1" desc="Summary of Quest objectives" level="2" siblings="0">
+        <param type="string" name="Summary" desc="Summary of Quest objectives" />
+      </func>
+      <func name="QuestIcon" parcount="5" desc="Icon registered on quest window when a quest has been received" level="2" siblings="0">
+        <param type="string" name="sprite" desc="DDS file name" />
+        <param type="int" name="min X" desc="top/left edge X" />
+        <param type="int" name="min Y" desc="top/left edge Y" />
+        <param type="int" name="max X" desc="Bottom/right edge X" />
+        <param type="int" name="max Y" desc="Bottom/right edge Y" />
+      </func>
+      <func name="QuestCompleteSave" parcount="1" desc="Weather the quest should be saved or no (on completed quests list)" level="2" siblings="0">
+        <param type="Bool" name="Save True/False" desc="True/False" />
+      </func>
+      <func name="QuestLevel" parcount="1" desc="Degree of difficulty of quest" level="2" siblings="0">
+        <param type="string" name="Level" desc="Example: LV 10" />
+      </func>
+      <func name="QuestAward" parcount="1" desc="Quest reward description" level="2" siblings="0">
+        <param type="string" name="Reward text" desc="Example: - Experience 520\\- Gold 4,800\\- C Grade Item (Random)" />
+      </func>
+      <func name="AddPhase" parcount="3" desc="Addition of Phase(Zone Number, Page Number, Summary of Phase)" level="2" siblings="-1">
+        <param type="int" name="Zone" desc="Zone: Zone12=0xC, Zone16=0xC, Zone8=8" />
+        <param type="int" name="Phase #" desc="Phase number, every phase in the same quest has it's own." />
+        <param type="string" name="Text" desc="Phase text" />
+      </func>
+      <func name="Phase_Target" parcount="2" desc="Mark the location of hint for current phase on entire map (X coordinate, Y coordinate)" level="3" siblings="0">
+        <param type="int" name="X coordinate" desc="X coordinate" />
+        <param type="int" name="Y coordinate" desc="Y coordinate" />
+      </func>
+      <func name="Trigger_Start" parcount="0" desc="Trigger entered when begining a quest" level="3" siblings="-1" />
+      <func name="Trigger_Puton" parcount="6" desc="Trigger generating an event when an item is positioned at the relevent location (Item ID, Zone ID, x, y, z, Zone Size)" level="3" siblings="-1">
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Zone ID" desc="Zone ID" />
+        <param type="float" name="X" desc="X coordinate" />
+        <param type="float" name="Y" desc="Y coordinate" />
+        <param type="float" name="Z" desc="Z coordinate" />
+        <param type="float" name="Zone Size" desc="Zone Size" />
+      </func>
+      <func name="Trigger_Geton" parcount="6" desc="Triggers when dashing into the relevent coordinate system (Item ID, Zone ID, x, y, z, Zone Size)" level="3" siblings="-1">
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Zone ID" desc="Zone ID" />
+        <param type="float" name="X" desc="X coordinate" />
+        <param type="float" name="Y" desc="Y coordinate" />
+        <param type="float" name="Z" desc="Z coordinate" />
+        <param type="float" name="Zone Size" desc="Zone Size" />
+      </func>
+      <func name="Trigger_Talk" parcount="1" desc="Triggered when talking with the relevant NPC (NPC ID)" level="3" siblings="-1">
+        <param type="int" name="NPC ID" desc="NPC ID" />
+      </func>
+      <func name="Trigger_Kill" parcount="2" desc="Triggered when certain number of relevent monster has been killed (Number to be killed, Monster ID)" level="3" siblings="-1">
+        <param type="int" name="Amount" desc="Amount to be killed" />
+        <param type="int" name="Monster ID" desc="Monster ID" />
+      </func>
+      <func name="Trigger_Pick" parcount="2" desc="Triggers when specified number of items are placed into Inventory (Quantity, Item ID)" level="3" siblings="-1">
+        <param type="int" name="Quantity" desc="Quantity" />
+        <param type="int" name="Item ID" desc="Item ID" />
+      </func>
+      <func name="Trigger_Fame" parcount="1" desc="Triggered when fame has been collected until sepcific fame amount (Fame)" level="3" siblings="-1">
+        <param type="int" name="Fame" desc="Amount of Fame" />
+      </func>
+      <func name="Trigger_LevelTalk" parcount="2" desc="Triggered when talking to the NPC at a relevent level (Level, NPC ID, ElseMsg)" level="3" siblings="-1">
+        <param type="int" name="Level" desc="Level" />
+        <param type="int" name="NPC ID" desc="NPC ID" />
+        <param type="string" name="Text" desc="Else Message" />
+      </func>
+      <func name="Else" parcount="0" desc="When the player hasn't meet all the requirements (event_disappear,trigger_talk,..)"  level="3" siblings="-1"/>
+      <func name="Event_Disappear" parcount="3" desc="Hides the corresponding item (Quantity, Item ID, Gold)" level="4" siblings="0">
+        <param type="int" name="Quantity" desc="Quantity" />
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Gold" desc="Gold" />
+      </func>
+      <func name="Event_Get" parcount="2" desc="Give relevent Item to a player character(Quantity, Item ID)" level="4" siblings="0">
+        <param type="int" name="Quantity" desc="Quantity" />
+        <param type="int" name="Item ID" desc="Item ID" />
+      </func>
+      <func name="Event_Spawn" parcount="4" desc="Spawn relevent Monster (Monster ID, x,y,z)" level="4" siblings="0">
+        <param type="int" name="Monster ID" desc="Monster ID" />
+        <param type="float" name="X" desc="X" />
+        <param type="float" name="Y" desc="Y" />
+        <param type="float" name="Z" desc="Z" />
+      </func>
+      <func name="Event_MonsterDrop" parcount="2" desc="Monster drops relevent Item and Quantity (Item ID, Quantity)" level="4" siblings="0">
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Quantity" desc="Quantity" />
+      </func>
+      <func name="Event_Award" parcount="4" desc="quest reward (Experience, Gold, Fame, Medal)" level="4" siblings="0">
+        <param type="int" name="EXP" desc="Experience" />
+        <param type="int" name="Gold" desc="Gold" />
+        <param type="int" name="Fame" desc="Fame" />
+        <param type="int" name="Medals" desc="Medals" />
+      </func>
+      <func name="Event_MsgBox" parcount="1" desc="Call message box (Message content is forced to begin a new line by '\\')" level="4" siblings="0">
+        <param type="string" name="Text" desc="Message box text, begin with \\" />
+      </func>
+      <func name="Event_Phase" parcount="1" desc="Skip to relevent phase number(Phase number)" level="4" siblings="0">
+        <param type="int" name="Phase #" desc="Phase Number" />
+      </func>
+      <func name="Event_End" parcount="0" desc="End of event, Completed without moving to a phase. Removes from active quest window." level="4" siblings="0"/>
+      <func name="Event_AwardItem" parcount="4" desc="Reward Graded Item(Item type, LV of PC, Item Grade) ??Item type to suit class of 0 = PC ??Level to suit level of 0=PC" level="4" siblings="0">
+        <param type="int" name="Type" desc="Item Type to suit NPC" />
+        <param type="int" name="Level" desc="Level of NPC" />
+        <param type="int" name="Grade" desc="Item Grade" />
+        <param type="int" name="Type" desc="Item Type to suit class" />
+      </func>
+      <func name="Event_AddQuest" parcount="2" desc="Force relevent quest to be registered (NPC ID giving quest, Quest ID forced to be registsred) ??0xFxxx is a quest that can not be cancelled" level="4" siblings="0">
+        <param type="int" name="NPC ID" desc="NPC ID" />
+        <param type="int" name="Quest ID" desc="Quest ID" />
+      </func>
+      <func name="Event_Move" parcount="3" desc="Move to X,Y coordinate of concerened zone (Zone, X, Y)" level="4" siblings="0">
+        <param type="int" name="Zone" desc="Zone ID" />
+        <param type="float" name="X" desc="X coordinate" />
+        <param type="float" name="Y" desc="Y coordinate" />
+      </func>
+      <func name="Event_TheaterMode" parcount="0" desc="Turn on Theater Mode"  level="4" siblings="0"/>
+    </mcf>
+    <mcf type="3">
+      <func name="AddString" parcount="2" desc="Adds a string to the game with the specific ID">
+        <param type="int" name="ID" desc="Specifies the id of the text" />
+        <param type="string" name="Text" desc="Text to add" />
+      </func>
+      <func name="AddString" parcount="1" desc="Adds a string to the game">
+        <param type="string" name="Text" desc="Text to add" />
+      </func>
+      <func name="RylNation" parcount="3" desc="Specifies the game nation">
+        <param type="int" name="Nation" desc="0=default, 1=Taiwan, 2=Japan, 3=China, 4=Thai, 5=Malaysia, 6=USA, 7=Indonesia, 8=Vietnam" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="string" name="Name" desc="e.g. RYLCib, RYLPotE" />
+      </func>
+    </mcf>
+  </ryl>
+  <ryl version="1">
+    <mcf type="1">
+      <!-- NPCscript.mcf -->
+      <func name="AddItem" parcount="4" desc="Add a new item to NPC shop">
+        <param type="int" name="NPC id" desc="The NPC ID to who's shop to add current item" />
+        <param type="int" name="Item" desc="Item ID. Reference to itemscript.gsf" />
+        <param type="int" name="Tab" desc="Tab ID. From 0 to 3" />
+        <param type="int" name="Page?" desc="Page ID. Starting from 0" />
+      </func>
+      <func name="AddDialog" parcount="4" desc="Add a new dialogue to the NPC (opens when clicked on 'Talk To')">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this dialogue" />
+        <param type="int" name="Page" desc="The page number of the current npc's dialogue. Default 1" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="string" name="Text" desc="The message to add to this dialogue" />
+      </func>
+      <func name="AddQuest" parcount="7" desc="Add a quest starting point to a NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this quest" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="int" name="Unknown" desc="" />
+        <param type="string" name="Quest" desc="The quest ID name" />
+      </func>
+      <func name="AddWords" parcount="2" desc="Add a message to NPC's head">
+        <param type="int" name="NPC id" desc="The NPC ID to whom to add this message" />
+        <param type="string" name="Text" desc="The message to show" />
+      </func>
+      <func name="AddZoneMove" parcount="5" desc="Set the target position of a zone teleport to a NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to set on this position" />
+        <param type="int" name="Zone" desc="Zone ID where the player is moved to" />
+        <param type="float" name="X" desc="X cordinate (e.g. from the left side of the map)" />
+        <param type="float" name="Y" desc="Y cordinate (e.g. the height)" />
+        <param type="float" name="Z" desc="Z cordinate (e.g. from the bottom of the map)" />
+      </func>
+      <func name="SetNPC" parcount="5" desc="Add a new NPC">
+        <param type="int" name="Zone" desc="Zone ID where to add it" />
+        <param type="int" name="NPC id" desc="The Unique NPC ID" />
+        <param type="int" name="Type" desc="NPC type / How is it showed on the mini map (0xB-weapon, 0x13-vault, 0x10 Trainer)" />
+        <param type="string" name="Texture" desc="Texture/model of the NPC" />
+        <param type="string" name="Name" desc="Name of the NPC" />
+      </func>
+      <func name="SetPosition" parcount="5" desc="Set the position of a NPC">
+        <param type="int" name="NPC id" desc="The NPC ID to set on this position" />
+        <param type="float" name="Dir" desc="Direction of the NPC where he is facing" />
+        <param type="float" name="X" desc="X cordinate (e.g. from the left side of the map)" />
+        <param type="float" name="Y" desc="Y cordinate (e.g. the height)" />
+        <param type="float" name="Z" desc="Z cordinate (e.g. from the bottom of the map)" />
+      </func>
+    </mcf>
+    <mcf type="2">
+      <!-- Quest.mcf -->
+
+      <func name="QuestTitle" parcount="1" desc="Quest title, has to be within 11 chars" level="2" siblings="0">
+        <param type="string" name="Title" desc="Quest title (11 chars or less)" />
+      </func>
+      <func name="QuestDesc" parcount="1" desc="Conversation message when NPC asks for a quest" level="2" siblings="0">
+        <param type="string" name="Text" desc="Conversation message when NPC asks for a quest" />
+      </func>
+      <func name="QuestShortDesc" parcount="1" desc="Summary of Quest objectives" level="2" siblings="0">
+        <param type="string" name="Summary" desc="Summary of Quest objectives" />
+      </func>
+      <func name="QuestIcon" parcount="5" desc="Icon registered on quest window when a quest has been received" level="2" siblings="0">
+        <param type="string" name="sprite" desc="DDS file name" />
+        <param type="int" name="min X" desc="top/left edge X" />
+        <param type="int" name="min Y" desc="top/left edge Y" />
+        <param type="int" name="max X" desc="Bottom/right edge X" />
+        <param type="int" name="max Y" desc="Bottom/right edge Y" />
+      </func>
+      <func name="QuestCompleteSave" parcount="1" desc="Weather the quest should be saved or no (on completed quests list)" level="2" siblings="0">
+        <param type="Bool" name="Save True/False" desc="True/False" />
+      </func>
+      <func name="QuestLevel" parcount="1" desc="Degree of difficulty of quest" level="2" siblings="0">
+        <param type="string" name="Level" desc="Example: LV 10" />
+      </func>
+      <func name="QuestAward" parcount="1" desc="Quest reward description" level="2" siblings="0">
+        <param type="string" name="Reward text" desc="Example: - Experience 520\\- Gold 4,800\\- C Grade Item (Random)" />
+      </func>
+      <func name="AddPhase" parcount="3" desc="Addition of Phase(Zone Number, Page Number, Summary of Phase)" level="2" siblings="-1">
+        <param type="int" name="Zone" desc="Zone: Zone12=0xC, Zone16=0xC, Zone8=8" />
+        <param type="int" name="Phase #" desc="Phase number, every phase in the same quest has it's own." />
+        <param type="string" name="Text" desc="Phase text" />
+      </func>
+      <func name="Phase_Target" parcount="2" desc="Mark the location of hint for current phase on entire map (X coordinate, Y coordinate)" level="3" siblings="0">
+        <param type="int" name="X coordinate" desc="X coordinate" />
+        <param type="int" name="Y coordinate" desc="Y coordinate" />
+      </func>
+      <func name="Trigger_Start" parcount="0" desc="Trigger entered when begining a quest" level="3" siblings="-1" />
+      <func name="Trigger_Puton" parcount="6" desc="Trigger generating an event when an item is positioned at the relevent location (Item ID, Zone ID, x, y, z, Zone Size)" level="3" siblings="-1">
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Zone ID" desc="Zone ID" />
+        <param type="float" name="X" desc="X coordinate" />
+        <param type="float" name="Y" desc="Y coordinate" />
+        <param type="float" name="Z" desc="Z coordinate" />
+        <param type="float" name="Zone Size" desc="Zone Size" />
+      </func>
+      <func name="Trigger_Geton" parcount="6" desc="Triggers when dashing into the relevent coordinate system (Item ID, Zone ID, x, y, z, Zone Size)" level="3" siblings="-1">
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Zone ID" desc="Zone ID" />
+        <param type="float" name="X" desc="X coordinate" />
+        <param type="float" name="Y" desc="Y coordinate" />
+        <param type="float" name="Z" desc="Z coordinate" />
+        <param type="float" name="Zone Size" desc="Zone Size" />
+      </func>
+      <func name="Trigger_Talk" parcount="1" desc="Triggered when talking with the relevant NPC (NPC ID)" level="3" siblings="-1">
+        <param type="int" name="NPC ID" desc="NPC ID" />
+      </func>
+      <func name="Trigger_Kill" parcount="2" desc="Triggered when certain number of relevent monster has been killed (Number to be killed, Monster ID)" level="3" siblings="-1">
+        <param type="int" name="Amount" desc="Amount to be killed" />
+        <param type="int" name="Monster ID" desc="Monster ID" />
+      </func>
+      <func name="Trigger_Pick" parcount="2" desc="Triggers when specified number of items are placed into Inventory (Quantity, Item ID)" level="3" siblings="-1">
+        <param type="int" name="Quantity" desc="Quantity" />
+        <param type="int" name="Item ID" desc="Item ID" />
+      </func>
+      <func name="Else" parcount="0" desc="When the player hasn't meet all the requirements (event_disappear,trigger_talk,..)"  level="3" siblings="-1"/>
+      <func name="Event_Disappear" parcount="3" desc="Hides the corresponding item (Quantity, Item ID, Gold)" level="4" siblings="0">
+        <param type="int" name="Quantity" desc="Quantity" />
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Gold" desc="Gold" />
+      </func>
+      <func name="Event_Get" parcount="2" desc="Give relevent Item to a player character(Quantity, Item ID)" level="4" siblings="0">
+        <param type="int" name="Quantity" desc="Quantity" />
+        <param type="int" name="Item ID" desc="Item ID" />
+      </func>
+      <func name="Event_Spawn" parcount="4" desc="Spawn relevent Monster (Monster ID, x,y,z)" level="4" siblings="0">
+        <param type="int" name="Monster ID" desc="Monster ID" />
+        <param type="float" name="X" desc="X" />
+        <param type="float" name="Y" desc="Y" />
+        <param type="float" name="Z" desc="Z" />
+      </func>
+      <func name="Event_MonsterDrop" parcount="2" desc="Monster drops relevent Item and Quantity (Item ID, Quantity)" level="4" siblings="0">
+        <param type="int" name="Item ID" desc="Item ID" />
+        <param type="int" name="Quantity" desc="Quantity" />
+      </func>
+      <func name="Event_Award" parcount="2" desc="quest reward (Experience, Gold, Fame, Medal)" level="4" siblings="0">
+        <param type="int" name="EXP" desc="Experience" />
+        <param type="int" name="Gold" desc="Gold" />
+      </func>
+      <func name="Event_MsgBox" parcount="1" desc="Call message box (Message content is forced to begin a new line by '\\')" level="4" siblings="0">
+        <param type="string" name="Text" desc="Message box text, begin with \\" />
+      </func>
+      <func name="Event_Phase" parcount="1" desc="Skip to relevent phase number(Phase number)" level="4" siblings="0">
+        <param type="int" name="Phase #" desc="Phase Number" />
+      </func>
+      <func name="Event_End" parcount="0" desc="End of event, Completed without moving to a phase. Removes from active quest window." level="4" siblings="0"/>
+    </mcf>
+  </ryl>
+</syntax>

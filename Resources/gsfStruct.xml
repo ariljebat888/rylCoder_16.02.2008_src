@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+################################################
+##                                            ##
+##         RYL mcf & gsf file editor          ##
+##                                            ##
+##   (C) 2006 & 2007 AlphA                    ##
+##                                            ##
+##   This source is for private development.  ##
+##   You can have this source only with the   ##
+##   owners permission.                       ##
+##                                            ##
+################################################
+
+<cell type=[Known data type] name=[Header name] col=[column number] hide=[yes/no] val=[def. value] replace=[table ID] />
+
+Known data types:
+  byte - 1 byte
+  i16 - signed 16bit(2 byte) integer
+  ui16 - unsigned 16bit(2 byte) integer
+  i32 - signed 32bit(4 byte) integer
+  ui32 - unsigned 32bit(4 byte) integer
+  float - 32bit single (4 byte) floating point value
+  char[len] - string with the specified length of bytes
+  
+Cell name:
+  The name that will be the header of this column
+  
+Cell hide:
+  The cell will not be written to output but will be written
+  on compiling to gsf. Cell val has to be specified.
+  
+Cell col:
+  The position of the col in the resulting table. Starts from 1
+  
+Cell hex:
+  Set to 1 on integer or byte types to display and parse the data as hex
+  
+Cell endtag:
+  For char[] types only: The byte value what to take as the ending of the text
+  Default is 0x0. This tag will be added upon compiling.
+  
+Cell multiplier:
+  for float/int types and no replacement can be in use in the same time:
+  Multiplies the number from binary with the given number. By saving it divides.
+  
+Linesplit val:
+  The value the type has to have to make a line split (start a new line)
+  Can be in normal 10(0-9) integer and 16(0-F) style hex(prefixed with a 0x)
+  This column is read in after parsing all the cells. If the linesplit cant be
+  recognized it wont move to a new line, it just starts adding new cols from the
+  cells start again.
+-->
+<gsf>
+  <file name="ItemScript" version="1600">
+    <structure>
+      <cells size="608" hascolumns="1">
+        <cell type="ui16" name="ID" col="1" />
+        <cell type="i16" name="???" col="62" />
+        <cell type="ui32" name="Price" col="19" />
+        <cell type="ui32" name="BlackPrice" col="21" />
+        <cell type="ui32" name="MedalPrice" col="22" />
+        <cell type="i16" name="DropOption" col="32" />
+        <cell type="byte" name="Grade" col="33" replace="3" val="2" />
+        <cell type="byte" name="CriticalType" col="34" />
+        <cell type="byte" name="AttackRange" col="35" />
+        <cell type="byte" name="ItemType" col="13" replace="1" />
+        <cell type="byte" name="SizeX" col="10" />
+        <cell type="byte" name="SizeY" col="11" />
+        <cell type="byte" name="???" col="" val="0" hide="1" />
+        <cell type="byte" name="Durability" col="26" />
+        <cell type="byte" name="MaxDurability" col="27" />
+        <cell type="byte" name="MinDropLevel" col="17" />
+        <cell type="byte" name="MaxDropLevel" col="18" />
+        <cell type="byte" name="AbleExchange" col="15" replace="4" />
+        <cell type="byte" name="AbleSell" col="16" replace="4" />
+        <cell type="byte" name="OptionPrice" col="20" replace="4" />
+        <cell type="ui32" name="--A--" col="46" redir_case="1" />
+        <cell type="ui32" name="Class" col="23" />
+        <cell type="ui16" name="LimitStat" col="24" replace="2" />
+        <cell type="ui16" name="Limit" col="25" />
+        <cell type="char[64]" name="Name" col="2" />
+        <cell type="char[32]" name="SpriteDDS" col="5" />
+        <cell type="ui16" name="MinX" col="6" />
+        <cell type="ui16" name="MinY" col="7" />
+        <cell type="ui16" name="MaxX" col="8" />
+        <cell type="ui16" name="MaxY" col="9" />
+        <cell type="char[32]" name="FieldModelName" col="3" />
+        <cell type="char[32]" name="AttachedModelName" col="4" />
+        <cell type="char[32]" name="EffectSound" col="12" />
+        <cell type="char[32]" name="TypeName" col="14" />
+        <cell type="char[256]" name="Description" col="38" />
+        <cell type="ui16" name="???" col="" val="0" hide="1" />
+        <cell type="ui16" name="MinDamage" col="28" />
+        <cell type="ui16" name="MaxDamage" col="29" />
+        <cell type="ui16" name="Defence" col="30" />
+        <cell type="ui16" name="Jewelry only column -> column 35" col="57" />
+        <cell type="ui16" name="Jewelry Related" col="64" />
+
+        <cell type="ui16" name="MaxHP" col="40" />
+        <cell type="ui16" name="HPregen" col="42" />
+        <cell type="ui16" name="MaxMP" col="41" />
+        <cell type="ui16" name="MPregen" col="43" />
+        <cell type="ui16" name="Jewelry only column -> column 34" col="56" />
+        <cell type="ui16" name="Block" col="31" />
+
+        <cell type="ui16" name="Speed" col="44" />
+        <cell type="ui16" name="MaxSocketNumber" col="36" />
+        <cell type="ui32" name="MagicResist" col="37" />
+
+        <cell type="ui16" name="Cooldown" col="39" />
+        <cell type="ui16" name="Skillpoint" col="45" />
+
+        <cell type="ui16" name="Unknown Value (Only Used on Snowimp Ring)" col="66" />
+        <cell type="ui16" name="Unknown Value (Only Used on Snowimp Ring)" col="65" />
+        <cell type="ui16" name="lighting/shock" col="67" />
+        <cell type="ui16" name="ligh/dark" col="68" />
+        <cell type="ui16" name="--B--" col="47" redir_case="1" />
+        <cell type="ui16" name="???" col="48" />
+        <cell type="float" name="X Coord - (Only used on TP Scrolls)" col="49" />
+        <cell type="float" name="Y Coord - (Only used on TP Scrolls)" col="50" />
+        <cell type="float" name="Z Coord - (Only used on TP Scrolls)" col="51" />
+        <cell type="byte" name="Zone - (Only used on TP Scrolls)" col="52" />
+        <cell type="byte" name="Unknown Value (Differs for diff types)" col="53" />
+        <cell type="byte" name="Unknown Value (Differs for diff types)" col="54" />
+        <cell type="byte" name="Unknown Value (Differs for diff types)" col="55" />
+        <cell type="ui32" name="Value for xp/cash special types" col="63" />
+
+        <cell type="ui16" name="Skill ID" col="58" hex="1" />
+        <cell type="ui16" name="Skill Level" col="61" />
+
+        <cell type="ui16" name="Quest ID #1" col="59" hex="1" />
+        <cell type="ui16" name="Quest ID That needs to be completed for previous to work" col="60" hex="1" />
+      </cells>
+    </structure>
+    <replacements>
+      <replacement id="1">
+        <elem to="SHIRT" from="1" />
+        <elem to="TUNIC" from="2" />
+        <elem to="CON_ARMOUR" from="3" />
+        <elem to="CON_HELM" from="4" />
+        <elem to="CON_GLOVE" from="5" />
+        <elem to="CON_BOOTS" from="6" />
+        <elem to="DEX_ARMOUR" from="7" />
+        <elem to="DEX_HELM" from="8" />
+        <elem to="DEX_GLOVE" from="9" />
+        <elem to="DEX_BOOTS" from="10" />
+        <elem to="ONEHANDED_SWORD" from="11" />
+        <elem to="TWOHANDED_SWORD" from="12" />
+        <elem to="ONEHANDED_AXE" from="13" />
+        <elem to="TWOHANDED_AXE" from="14" />
+        <elem to="ONEHANDED_BLUNT" from="15" />
+        <elem to="TWOHANDED_BLUNT" from="16" />
+        <elem to="BOW" from="17" />
+        <elem to="CROSSBOW" from="18" />
+        <elem to="STAFF" from="19" />
+        <elem to="DAGGER" from="20" />
+        <elem to="SHIELD" from="21" />
+        <elem to="CON_BODY" from="22" />
+        <elem to="CON_HEAD" from="23" />
+        <elem to="CON_PELVIS" from="24" />
+        <elem to="CON_PROTECT_A" from="25" />
+        <elem to="DEX_BODY" from="26" />
+        <elem to="DEX_HEAD" from="27" />
+        <elem to="DEX_PELVIS" from="28" />
+        <elem to="DEX_PROTECT_A" from="29" />
+        <elem to="COM_BLUNT" from="30" />
+        <elem to="COM_SWORD" from="31" />
+        <elem to="OPP_HAMMER" from="32" />
+        <elem to="OPP_AXE" from="33" />
+        <elem to="OPP_SLUSHER" from="34" />
+        <elem to="OPP_TALON" from="35" />
+        <elem to="OPP_SYTHE" from="36" />
+        <elem to="SKILL_A_GUARD" from="37" />
+        <elem to="SKILL_A_ATTACK" from="38" />
+        <elem to="SKILL_A_GUN" from="39" />
+        <elem to="SKILL_A_KNIFE" from="40" />
+        <elem to="ARROW" from="41" />
+        <elem to="BOLT" from="42" />
+        <elem to="AMMO" from="43" />
+        <elem to="POTION" from="44" />
+        <elem to="EXPBOOK" from="45" />
+        <elem to="CASHBOOK" from="46" />
+        <elem to="EVENT_LOTTERY" from="47" />
+        <elem to="PORTAL" from="48" />
+        <elem to="FIRE_CRACKER" from="49" />
+        <elem to="SKILLBOOK" from="50" />
+        <elem to="GEM" from="51" />
+        <elem to="ORE" from="52" />
+        <elem to="ETC" from="53" />
+        <elem to="EVENT_DROP" from="54" />
+        <elem to="CAMP_KIT" from="55" />
+        <elem to="SHORT_RANGE_ARMS_KIT" from="56" />
+        <elem to="LONG_RANGE_ARMS_KIT" from="57" />
+        <elem to="AIRSHIP_KIT" from="58" />
+        <elem to="WORLDWEAPON_K_KIT" from="59" />
+        <elem to="WORLDWEAPON_M_KIT" from="60" />
+        <elem to="MINERAL_KIT" from="61" />
+        <elem to="QUEST_ITEM" from="62" />
+        <elem to="NECKLACE" from="63" />
+        <elem to="RING" from="64" />
+        <elem to="RUNE" from="65" />
+      </replacement>
+      <replacement id="2">
+        <elem to="NONE" from="0" />
+        <elem to="STR" from="1" />
+        <elem to="DEX" from="2" />
+        <elem to="CON" from="3" />
+        <elem to="INT" from="4" />
+        <elem to="WIS" from="5" />
+        <elem to="LEVEL" from="6" />
+      </replacement>
+      <replacement id="3">
+        <elem to="X" from="7" />
+        <elem to="F" from="6" />
+        <elem to="D" from="5" />
+        <elem to="C" from="4" />
+        <elem to="B" from="3" />
+        <elem to="A" from="2" />
+        <elem to="AA" from="1" />
+        <elem to="AAA" from="0" />
+      </replacement>
+      <replacement id="4">
+        <elem to="X" from="0" />
+        <elem to="O" from="1" />
+      </replacement>
+    </replacements>
+    <redirections>
+      <redirection name="Equipment" values="*,4" useasheader="1">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="MinDamage" col="28" />
+        <cell name="MaxDamage" col="29" />
+        <cell name="Defence" col="30" />
+        <cell name="Block" col="31" />
+        <cell name="DropOption" col="32" />
+        <cell name="Grade" col="33" />
+        <cell name="CriticalType" col="34" />
+        <cell name="AttackRange" col="35" />
+        <cell name="MaxSocketNum/Magic" col="36" />
+        <cell name="MagicResist" col="37" />
+        <cell name="Evade" col="64" />
+        <cell name="CoolDown" col="39" />
+        <cell name="MaxHP" col="40" />
+        <cell name="MaxMP" col="41" />
+        <cell name="HPRegen" col="42" />
+        <cell name="MPRegen" col="43" />
+        <cell name="Speed" col="44" />
+        <cell name="SkillPoint" col="45" />
+        <cell name="Frost" col="66" />
+        <cell name="Fire" col="65" />
+        <cell name="Electro" col="67" />
+        <cell name="Darkness" col="68" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="???" col="48" />
+        <cell name="???" col="53" />
+        <cell name="???" col="54" />
+        <cell name="???" col="55" />
+        <cell name="???" col="62" />
+        <cell name="--A--" col="46" />
+        <cell name="--B--" col="47" />
+      </redirection>
+      <redirection name="Yewelery" values="*,20">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="MinDamage" col="28" />
+        <cell name="MaxDamage" col="29" />
+        <cell name="Defence" col="30" />
+        <cell name="Block" col="31" />
+        <cell name="DropOption" col="32" />
+        <cell name="Grade" col="33" />
+        <cell name="Critical Rate" col="56" />
+        <cell name="Attack Bonus" col="57" />
+        <cell name="MaxSocketNum/Magic" col="36" />
+        <cell name="MagicResist" col="37" />
+        <cell name="Evade" col="64" />
+        <cell name="CoolDown" col="39" />
+        <cell name="MaxHP" col="40" />
+        <cell name="MaxMP" col="41" />
+        <cell name="HPRegen" col="42" />
+        <cell name="MPRegen" col="43" />
+        <cell name="Speed" col="44" />
+        <cell name="SkillPoint" col="45" />
+        <cell name="Frost" col="66" />
+        <cell name="Fire" col="65" />
+        <cell name="Electro" col="67" />
+        <cell name="Darkness" col="68" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="???" col="48" />
+        <cell name="???" col="53" />
+        <cell name="???" col="54" />
+        <cell name="???" col="55" />
+        <cell name="-1 col" col="62" />
+        <cell name="--A--" col="46" />
+        <cell name="--B--" col="47" />
+      </redirection>
+      <redirection name="ETC,Gem,Ore" values="8,0">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="???" col="48" />
+        <cell name="???" col="53" />
+        <cell name="???" col="54" />
+        <cell name="???" col="55" />
+        <cell name="-1 col" col="62" />
+        <cell name="--A--" col="46" />
+        <cell name="--B--" col="47" />
+      </redirection>
+      <redirection name="Quest,Fire_crackers,SkillBooks,Pots" values="2,0;6,0;10,0;14,0">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="Skill ID" col="58" />
+        <cell name="Skill Lvl" col="61" />
+        <cell name="Zone" col="52" />
+        <cell name="X cord" col="49" />
+        <cell name="Y cord" col="50" />
+        <cell name="Z cord" col="51" />
+        <cell name="???" col="63" />
+        <cell name="Quest ID" col="59" />
+        <cell name="Quest ID that has to be done" col="60" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="???" col="48" />
+        <cell name="???" col="53" />
+        <cell name="???" col="54" />
+        <cell name="???" col="55" />
+        <cell name="-1 col" col="62" />
+        <cell name="--A--" col="46" />
+        <cell name="--B--" col="47" />
+      </redirection>
+    </redirections>
+  </file>
+  <file name="ItemScript" version="1700">
+    <structure>
+      <cells size="616" hascolumns="1">
+        <cell type="ui16" name="ID" col="1" />
+        <cell type="i16" name="???" col="62" />
+        <cell type="ui32" name="Price" col="19" />
+        <cell type="ui32" name="BlackPrice" col="21" />
+        <cell type="ui32" name="MedalPrice" col="22" />
+        <cell type="i16" name="DropOption" col="32" />
+        <cell type="byte" name="Grade" col="33" replace="3" val="2" />
+        <cell type="byte" name="CriticalType" col="34" />
+        <cell type="byte" name="AttackRange" col="35" />
+        <cell type="byte" name="ItemType" col="13" replace="1" />
+        <cell type="byte" name="SizeX" col="10" />
+        <cell type="byte" name="SizeY" col="11" />
+        <cell type="byte" name="???" col="" val="0" hide="1" />
+        <cell type="byte" name="Durability" col="26" />
+        <cell type="byte" name="MaxDurability" col="27" />
+        <cell type="byte" name="MinDropLevel" col="17" />
+        <cell type="byte" name="MaxDropLevel" col="18" />
+        <!--  >1700 start -->
+        <cell type="ui16" name="lowLvl(not sure)" col="69" />
+        <cell type="ui16" name="highLvl(not sure)" col="70" />
+        <cell type="byte" name="1700x2" col="71" />
+        <!--  >1700 END -->
+        <cell type="byte" name="AbleExchange" col="15" replace="4" />
+        <cell type="byte" name="AbleSell" col="16" replace="4" />
+        <cell type="byte" name="OptionPrice" col="20" replace="4" />
+        <!--  >1700 start -->
+        <cell type="ui16" name="1700x3" col="72" />
+        <cell type="byte" name="1700x4" col="73" />
+        <!--  >1700 END -->
+        <cell type="ui32" name="--A--" col="46" redir_case="1" />
+        <cell type="ui32" name="Class" col="23" />
+        <cell type="ui16" name="LimitStat" col="24" replace="2" />
+        <cell type="ui16" name="Limit" col="25" />
+        <cell type="char[64]" name="Name" col="2" />
+        <cell type="char[32]" name="SpriteDDS" col="5" />
+        <cell type="ui16" name="MinX" col="6" />
+        <cell type="ui16" name="MinY" col="7" />
+        <cell type="ui16" name="MaxX" col="8" />
+        <cell type="ui16" name="MaxY" col="9" />
+        <cell type="char[32]" name="FieldModelName" col="3" />
+        <cell type="char[32]" name="AttachedModelName" col="4" />
+        <cell type="char[32]" name="EffectSound" col="12" />
+        <cell type="char[32]" name="TypeName" col="14" />
+        <cell type="char[256]" name="Description" col="38" />
+        <cell type="ui16" name="???" col="" val="0" hide="1" />
+        <cell type="ui16" name="MinDamage" col="28" />
+        <cell type="ui16" name="MaxDamage" col="29" />
+        <cell type="ui16" name="Defence" col="30" />
+        <cell type="ui16" name="Jewelry only column -> column 35" col="57" />
+        <cell type="ui16" name="Jewelry Related" col="64" />
+
+        <cell type="ui16" name="MaxHP" col="40" />
+        <cell type="ui16" name="HPregen" col="42" />
+        <cell type="ui16" name="MaxMP" col="41" />
+        <cell type="ui16" name="MPregen" col="43" />
+        <cell type="ui16" name="Jewelry only column -> column 34" col="56" />
+        <cell type="ui16" name="Block" col="31" />
+
+        <cell type="ui16" name="Speed" col="44" />
+        <cell type="ui16" name="MaxSocketNumber" col="36" />
+        <cell type="ui32" name="MagicResist" col="37" />
+
+        <cell type="ui16" name="Cooldown" col="39" />
+        <cell type="ui16" name="Skillpoint" col="45" />
+
+        <cell type="ui16" name="Unknown Value (Only Used on Snowimp Ring)" col="66" />
+        <cell type="ui16" name="Unknown Value (Only Used on Snowimp Ring)" col="65" />
+        <cell type="ui16" name="lighting/shock" col="67" />
+        <cell type="ui16" name="ligh/dark" col="68" />
+        <cell type="ui16" name="--B--" col="47" redir_case="1" />
+        <cell type="ui16" name="???" col="48" />
+        <cell type="float" name="X Coord - (Only used on TP Scrolls)" col="49" />
+        <cell type="float" name="Y Coord - (Only used on TP Scrolls)" col="50" />
+        <cell type="float" name="Z Coord - (Only used on TP Scrolls)" col="51" />
+        <cell type="byte" name="Zone - (Only used on TP Scrolls)" col="52" />
+        <cell type="byte" name="Unknown Value (Differs for diff types)" col="53" />
+        <cell type="byte" name="Unknown Value (Differs for diff types)" col="54" />
+        <cell type="byte" name="Unknown Value (Differs for diff types)" col="55" />
+        <cell type="ui32" name="Value for xp/cash special types" col="63" />
+
+        <cell type="ui16" name="Skill ID" col="58" hex="1" />
+        <cell type="ui16" name="Skill Level" col="61" />
+
+        <cell type="ui16" name="Quest ID #1" col="59" hex="1" />
+        <cell type="ui16" name="Quest ID That needs to be completed for previous to work" col="60" hex="1" />
+      </cells>
+    </structure>
+    <replacements>
+      <replacement id="1">
+        <elem to="SHIRT" from="1" />
+        <elem to="TUNIC" from="2" />
+        <elem to="CON_ARMOUR" from="3" />
+        <elem to="CON_HELM" from="4" />
+        <elem to="CON_GLOVE" from="5" />
+        <elem to="CON_BOOTS" from="6" />
+        <elem to="DEX_ARMOUR" from="7" />
+        <elem to="DEX_HELM" from="8" />
+        <elem to="DEX_GLOVE" from="9" />
+        <elem to="DEX_BOOTS" from="10" />
+        <elem to="ONEHANDED_SWORD" from="11" />
+        <elem to="TWOHANDED_SWORD" from="12" />
+        <elem to="ONEHANDED_AXE" from="13" />
+        <elem to="TWOHANDED_AXE" from="14" />
+        <elem to="ONEHANDED_BLUNT" from="15" />
+        <elem to="TWOHANDED_BLUNT" from="16" />
+        <elem to="BOW" from="17" />
+        <elem to="CROSSBOW" from="18" />
+        <elem to="STAFF" from="19" />
+        <elem to="DAGGER" from="20" />
+        <elem to="SHIELD" from="21" />
+        <elem to="CON_BODY" from="22" />
+        <elem to="CON_HEAD" from="23" />
+        <elem to="CON_PELVIS" from="24" />
+        <elem to="CON_PROTECT_A" from="25" />
+        <elem to="DEX_BODY" from="26" />
+        <elem to="DEX_HEAD" from="27" />
+        <elem to="DEX_PELVIS" from="28" />
+        <elem to="DEX_PROTECT_A" from="29" />
+        <elem to="COM_BLUNT" from="30" />
+        <elem to="COM_SWORD" from="31" />
+        <elem to="OPP_HAMMER" from="32" />
+        <elem to="OPP_AXE" from="33" />
+        <elem to="OPP_SLUSHER" from="34" />
+        <elem to="OPP_TALON" from="35" />
+        <elem to="OPP_SYTHE" from="36" />
+        <elem to="SKILL_A_GUARD" from="37" />
+        <elem to="SKILL_A_ATTACK" from="38" />
+        <elem to="SKILL_A_GUN" from="39" />
+        <elem to="SKILL_A_KNIFE" from="40" />
+        <elem to="ARROW" from="41" />
+        <elem to="BOLT" from="42" />
+        <elem to="AMMO" from="43" />
+        <elem to="POTION" from="44" />
+        <elem to="EXPBOOK" from="45" />
+        <elem to="CASHBOOK" from="46" />
+        <elem to="EVENT_LOTTERY" from="47" />
+        <elem to="PORTAL" from="48" />
+        <elem to="FIRE_CRACKER" from="49" />
+        <elem to="SKILLBOOK" from="50" />
+        <elem to="GEM" from="51" />
+        <elem to="ORE" from="52" />
+        <elem to="ETC" from="53" />
+        <elem to="EVENT_DROP" from="54" />
+        <elem to="CAMP_KIT" from="55" />
+        <elem to="SHORT_RANGE_ARMS_KIT" from="56" />
+        <elem to="LONG_RANGE_ARMS_KIT" from="57" />
+        <elem to="AIRSHIP_KIT" from="58" />
+        <elem to="WORLDWEAPON_K_KIT" from="59" />
+        <elem to="WORLDWEAPON_M_KIT" from="60" />
+        <elem to="MINERAL_KIT" from="61" />
+        <elem to="QUEST_ITEM" from="62" />
+        <elem to="NECKLACE" from="63" />
+        <elem to="RING" from="64" />
+        <elem to="RUNE" from="65" />
+      </replacement>
+      <replacement id="2">
+        <elem to="NONE" from="0" />
+        <elem to="STR" from="1" />
+        <elem to="DEX" from="2" />
+        <elem to="CON" from="3" />
+        <elem to="INT" from="4" />
+        <elem to="WIS" from="5" />
+        <elem to="LEVEL" from="6" />
+      </replacement>
+      <replacement id="3">
+        <elem to="X" from="7" />
+        <elem to="F" from="6" />
+        <elem to="D" from="5" />
+        <elem to="C" from="4" />
+        <elem to="B" from="3" />
+        <elem to="A" from="2" />
+        <elem to="AA" from="1" />
+        <elem to="AAA" from="0" />
+      </replacement>
+      <replacement id="4">
+        <elem to="X" from="0" />
+        <elem to="O" from="1" />
+      </replacement>
+    </replacements>
+    <redirections>
+      <redirection name="Equipment" values="*,4" useasheader="1">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="LowLevel" col="69" />
+        <cell name="HighLevel" col="70" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="MinDamage" col="28" />
+        <cell name="MaxDamage" col="29" />
+        <cell name="Defence" col="30" />
+        <cell name="Block" col="31" />
+        <cell name="DropOption" col="32" />
+        <cell name="Grade" col="33" />
+        <cell name="CriticalType" col="34" />
+        <cell name="AttackRange" col="35" />
+        <cell name="MaxSocketNum/Magic" col="36" />
+        <cell name="MagicResist" col="37" />
+        <cell name="Evade" col="64" />
+        <cell name="CoolDown" col="39" />
+        <cell name="MaxHP" col="40" />
+        <cell name="MaxMP" col="41" />
+        <cell name="HPRegen" col="42" />
+        <cell name="MPRegen" col="43" />
+        <cell name="Speed" col="44" />
+        <cell name="SkillPoint" col="45" />
+        <cell name="Frost" col="66" />
+        <cell name="Fire" col="65" />
+        <cell name="Electro" col="67" />
+        <cell name="Darkness" col="68" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="-A-" col="46" />
+        <cell name="-B-" col="47" />
+      </redirection>
+      <redirection name="Yewelery" values="*,20">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="LowLevel" col="69" />
+        <cell name="HighLevel" col="70" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="MinDamage" col="28" />
+        <cell name="MaxDamage" col="29" />
+        <cell name="Defence" col="30" />
+        <cell name="Block" col="31" />
+        <cell name="DropOption" col="32" />
+        <cell name="Grade" col="33" />
+        <cell name="Critical Rate" col="56" />
+        <cell name="Attack Bonus" col="57" />
+        <cell name="MaxSocketNum/Magic" col="36" />
+        <cell name="MagicResist" col="37" />
+        <cell name="Evade" col="64" />
+        <cell name="CoolDown" col="39" />
+        <cell name="MaxHP" col="40" />
+        <cell name="MaxMP" col="41" />
+        <cell name="HPRegen" col="42" />
+        <cell name="MPRegen" col="43" />
+        <cell name="Speed" col="44" />
+        <cell name="SkillPoint" col="45" />
+        <cell name="Frost" col="66" />
+        <cell name="Fire" col="65" />
+        <cell name="Electro" col="67" />
+        <cell name="Darkness" col="68" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="-A-" col="46" />
+        <cell name="-B-" col="47" />
+      </redirection>
+      <redirection name="ETC,Gem,Ore" values="8,0">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="LowLevel" col="69" />
+        <cell name="HighLevel" col="70" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="-A-" col="46" />
+        <cell name="-B-" col="47" />
+      </redirection>
+      <redirection name="Quest,Fire_crackers,SkillBooks,Pots" values="2,0;6,0;10,0;14,0">
+        <cell name="ID" col="1" />
+        <cell name="ItemName" col="2" />
+        <cell name="FieldModelName" col="3" />
+        <cell name="AttachedModelName" col="4" />
+        <cell name="SpriteDDS" col="5" />
+        <cell name="MinX" col="6" />
+        <cell name="MinY" col="7" />
+        <cell name="MaxX" col="8" />
+        <cell name="MaxY" col="9" />
+        <cell name="SizeX" col="10" />
+        <cell name="SizeY" col="11" />
+        <cell name="EffectSound" col="12" />
+        <cell name="ItemType" col="13" />
+        <cell name="TypeName" col="14" />
+        <cell name="AbleExchangeNDrop" col="15" />
+        <cell name="AbleSell" col="16" />
+        <cell name="MinDropLevel" col="17" />
+        <cell name="MaxDropLevel" col="18" />
+        <cell name="Price" col="19" />
+        <cell name="OptionPrice" col="20" />
+        <cell name="BlackPrice" col="21" />
+        <cell name="MedalPrice" col="22" />
+        <cell name="ClassLimit" col="23" />
+        <cell name="LimitStat" col="24" />
+        <cell name="Limit" col="25" />
+        <cell name="LowLevel" col="69" />
+        <cell name="HighLevel" col="70" />
+        <cell name="Durability" col="26" />
+        <cell name="MaxDurability" col="27" />
+        <cell name="Skill ID" col="58" />
+        <cell name="Skill Lvl" col="61" />
+        <cell name="Zone" col="52" />
+        <cell name="X cord" col="49" />
+        <cell name="Y cord" col="50" />
+        <cell name="Z cord" col="51" />
+        <cell name="???" col="63" />
+        <cell name="Quest ID" col="59" />
+        <cell name="Quest ID that has to be done" col="60" />
+        <cell name="Desc" col="38" />
+        <!-- test cols have to be last! -->
+        <cell name="-A-" col="46" />
+        <cell name="-B-" col="47" />
+      </redirection>
+    </redirections>
+  </file>
+  <file name="Script1">
+    <structure>
+      <cells size="14" hascolumns="0">
+        <cell type="char[14]" name="Bad_word" />
+      </cells>
+      <linesplit type="byte" val="0" />
+    </structure>
+  </file>
+  <file name="Chemical">
+    <structure>
+      <cells size="9" hascolumns="1">
+        <cell type="ui16" name="Pick_item" col="1" />
+        <cell type="ui16" name="Put_item" col="3" />
+        <cell type="ui16" name="Result_item" col="5" />
+        <cell type="byte" name="Pick_item_num" col="2" />
+        <cell type="byte" name="Put_item_num" col="4" />
+        <cell type="byte" name="Result_item_num" col="6" />
+      </cells>
+      <linesplit type="byte" val="0" />
+    </structure>
+  </file>
+  <file name="SpecialCompensation">
+    <structure>
+      <cells size="2" hascolumns="0">
+        <cell type="ui16" name="Item" />
+      </cells>
+      <linesplit type="ui16" val="0" />
+    </structure>
+  </file>
+  <file name="SkillScript">
+    <structure>
+      <cells size="516" hascolumns="1">
+        <cell type="char[32]" name="EffectFlag" col="20" />
+        <cell type="char[32]" name="HitFlag" col="21" />
+        <cell type="char[32]" name="CastingFlag" col="19" />
+        <cell type="char[64]" name="Name[5]" col="4" />
+        <cell type="char[32]" name="DDS" col="24" />
+        <cell type="ui16" name="MinX" col="25" />
+        <cell type="ui16" name="MinY" col="26" />
+        <cell type="ui16" name="MaxX" col="27" />
+        <cell type="ui16" name="MaxY" col="28" />
+        <cell type="char[256]" name="Text" col="37" endtag="0x0A" />
+        <cell type="ui32" name="Type" col="2" replace="1" />
+        <cell type="ui32" name="Target" col="10" replace="2" />
+        <cell type="ui32" name="Limit" col="5" replace="4" />
+        <cell type="ui16" name="Stat[0]" col="6" replace="3" />
+        <cell type="ui16" name="Value[0]" col="7" />
+        <cell type="ui16" name="ID" col="1" hex="1" />
+        <cell type="ui16" name="StartMP" col="14"/>
+        <cell type="ui16" name="LevelMP" col="15"/>
+        <cell type="ui16" name="LockAdd" col="16"/>
+        <cell type="ui16" name="StartTick" col="17"/>
+        <cell type="ui16" name="LevelTick" col="18"/>
+        <cell type="ui16" name="Parent" col="35" hex="1" />
+        <cell type="ui16" name="Child" col="36" hex="1" />
+        <cell type="ui32" name="CoolDownTime" col="22"/>
+        <cell type="float" name="mRange" col="11" />
+        <cell type="float" name="Range" col="12" />
+        <cell type="float" name="Region" col="13" />
+        <cell type="byte" name="Protection" col="31" />
+        <cell type="byte" name="Gauge" col="34" />
+        <cell type="byte" name="ClassSkill" col="3" />
+        <cell type="byte" name="Interrupt" col="32" />
+        <cell type="byte" name="Counter" col="33" />
+        <cell type="byte" name="EndScript" col="30" />
+        <cell type="byte" name="EndCoolDown" col="23" />
+        <cell type="byte" name="Hit" col="29" />
+        <cell type="ui16" name="Stat[1]" col="8" replace="3" />
+        <cell type="ui16" name="Value[1]" col="9" />
+      </cells>
+    </structure>
+    <replacements>
+      <replacement id="1">
+        <elem to="NONE" from="0" />
+        <elem to="PASSIVE" from="1" />
+        <elem to="INSTANCE" from="2" />
+        <elem to="CAST" from="3" />
+        <elem to="CHANT" from="4" />
+        <elem to="ITEM" from="6" />
+        <elem to="SET" from="7" />
+        <elem to="ACTION" from="8" />
+      </replacement>
+      <replacement id="2">
+        <elem to="NONE" from="0" />
+        <elem to="MELEE" from="1" />
+        <elem to="FRIEND" from="2" />
+        <elem to="ENEMY" from="3" />
+        <elem to="FRDEAD" from="4" />
+        <elem to="PARTY" from="8" />
+        <elem to="FREXME" from="9" />
+        <elem to="SUMMON" from="11" />
+      </replacement>
+      <replacement id="3">
+        <elem to="NONE" from="0" />
+        <elem to="STR" from="1" />
+        <elem to="DEX" from="2" />
+        <elem to="CON" from="3" />
+        <elem to="INT" from="4" />
+        <elem to="WIS" from="5" />
+        <elem to="LEVEL" from="6" />
+      </replacement>
+      <replacement id="4">
+        <elem to="NONE" from="0" />
+        <elem to="FORFIGHTER" from="1" />
+        <elem to="WITHDAGGER" from="5" />
+        <elem to="RANGED" from="7" />
+        <elem to="WITHWEAPON" from="10" />
+        <elem to="ATTACKARM" from="11" />
+        <elem to="GUNARM" from="12" />
+        <elem to="KNIFEARM" from="13" />
+      </replacement>
+    </replacements>
+    <rules>
+      <repeatemptyline listentocol="3" onvalue="1" repeat="4" />
+    </rules>
+  </file>
+  <file name="MonsterProtoType" version="1600">
+    <structure>
+      <cells size="548" hascolumns="1">
+        <cell type="ui32" name="Unknown Value (Always 0)" col="98" />
+        <cell type="float" name="Unknown Float Value" col="9" multiplier="100" />
+        <cell type="ui32" name="Unknown Value (Always 8)" col="" val="8" hide="1" />
+        <cell type="ui32" name="Respawn Area(?)" col="8" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="93" />
+        <cell type="float" name="Unknown Float Value" col="11" multiplier="100" />
+        <cell type="ui32" name="Unknown Value (Always 1)" col="99" />
+        <cell type="ui32" name="Respawn Area Again(?)" col="10" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="119" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="94" />
+        <cell type="ui32" name="Unknown Value (Always 2)" col="" val="2" hide="1" />
+        <cell type="ui32" name="Unknown Value (Relates to col #12)" col="13" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="126" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="118" />
+        <cell type="ui32" name="Unknown Value (Always 24)" col="" val="24" hide="1" />
+        <cell type="ui32" name="Unknown Value (Relates to col #13)" col="12" />
+        <cell type="char[64]" name="Name" col="2" />
+        <cell type="char[32]" name="Model" col="3" />
+        <cell type="float" name="Possibly Movement Related" col="14" />
+        <cell type="float" name="Possibly Movement Related" col="15" />
+        <cell type="float" name="Possibly Movement Related" col="16" />
+        <cell type="float" name="Possibly Movement Related" col="17" />
+        <cell type="ui16" name="SpecialDrop #1" col="55" />
+        <cell type="ui16" name="SpecialDrop #2" col="56" />
+        <cell type="ui16" name="SpecialDrop #3" col="57" />
+        <cell type="ui16" name="SpecialDrop #4" col="58" />
+        <cell type="ui16" name="SpecialDrop #5" col="59" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="127" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="60" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="62" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="63" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="64" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="65" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="66" />
+        <cell type="ui32" name="UUnknown Value (Droprate of something)" col="68" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="69" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="67" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="61" />
+        <cell type="ui32" name="Stone of Oblivion Droprate" col="70" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="71" />
+        <cell type="ui32" name="F Equipment Droprate" col="72" />
+        <cell type="ui32" name="D Equipment Droprate" col="73" />
+        <cell type="ui32" name="C Equipment Droprate" col="74" />
+        <cell type="ui32" name="B Equipment Droprate" col="75" />
+        <cell type="ui32" name="A Equipment Droprate" col="76" />
+        <cell type="ui32" name="F Helmet Droprate" col="77" />
+        <cell type="ui32" name="D Helmet Droprate" col="78" />
+        <cell type="ui32" name="C Helmet Droprate" col="79" />
+        <cell type="ui32" name="B Helmet Droprate" col="80" />
+        <cell type="ui32" name="A Helmet Droprate" col="81" />
+        <cell type="ui32" name="Boots/Gloves Droprate" col="82" />
+        <cell type="ui32" name="F Rings Droprate" col="83" />
+        <cell type="ui32" name="D Rings Droprate" col="84" />
+        <cell type="ui32" name="C Rings Droprate" col="85" />
+        <cell type="ui32" name="B Rings Droprate" col="86" />
+        <cell type="ui32" name="A Rings Droprate" col="87" />
+        <cell type="ui32" name="F Necklace Droprate" col="88" />
+        <cell type="ui32" name="D Necklace Droprate" col="89" />
+        <cell type="ui32" name="C Necklace Droprate" col="90" />
+        <cell type="ui32" name="B Necklace Droprate" col="91" />
+        <cell type="ui32" name="A Necklace Droprate" col="92" />
+
+        <cell type="ui32" name="Unknown Value (Always 0)" col="97" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="30" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="100" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="122" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="96" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="28" />
+        <cell type="ui32" name="Unknown Value (Always 257)" col="" val="257" hide="1" />
+
+        <cell type="ui32" name="ID" col="1" />
+        <cell type="ui32" name="Spawn Time" col="54" />
+        <cell type="float" name="Scale size of model (float)" col="38" />
+        <cell type="float" name="Unknown (float) 19" col="19" />
+        <cell type="ui16" name="Unknown Value" col="18" />
+        <cell type="byte" name="Monster Class" col="6" replace="2" />
+        <cell type="byte" name="Unknown Value" col="39" />
+        <cell type="byte" name="Monster Type (0 normal - 2/5 miniboss - 20 boss)" col="44" />
+        <cell type="byte" name="Boss Toggle (On for miniboss,boss / Off for rest)" col="43" replace="1" />
+        <cell type="ui16" name="Nation (0=Neutral,1=KR,2=MK - Only used for statues/guards otherwise always 0)" col="5" />
+        <cell type="ui16" name="Skill Related (int)" col="45" />
+        <cell type="ui16" name="Skill #1" col="46" hex="1" />
+        <cell type="ui16" name="Skill #2" col="47" hex="1" />
+        <cell type="ui16" name="Skill #3" col="48" hex="1" />
+        <cell type="ui16" name="Skill #4" col="49" hex="1" />
+        <cell type="ui16" name="Skill #5" col="50" hex="1" />
+        <cell type="byte" name="Skill Related (int)" col="51" />
+        <cell type="byte" name="Skill Related (int)" col="52" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="123" />
+        <cell type="float" name="Unknown Float (Seems level related)" col="53" />
+        <cell type="byte" name="Unknown On/Off Toggle (On for Siege / Off for rest)" col="7" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (On for statues / Off for rest)" col="40" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (Off for siege, summon / On for rest)" col="41" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle" col="42" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (Off for Siege, Object Types / On for rest)" col="4" replace="1" />
+        <cell type="byte" name="Unknown Value (Always 0)" col="121" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="120" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="101" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="102" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="103" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="104" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="105" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="106" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="107" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="108" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="109" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="110" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="111" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="112" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="113" />
+        <cell type="ui32" name="Base XP" col="20" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="124" />
+        <cell type="ui32" name="Mob Level" col="21" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="95" />
+        <cell type="ui16" name="Min Dam" col="22" />
+        <cell type="ui16" name="Max Dam" col="23" />
+        <cell type="ui16" name="Defense" col="25" />
+        <cell type="ui16" name="Hit Rate" col="24" />
+        <cell type="ui16" name="Evade" col="26" />
+        <cell type="ui16" name="HP" col="34" />
+        <cell type="ui16" name="HP Regen" col="36" />
+        <cell type="ui16" name="MP" col="35" />
+        <cell type="ui16" name="MP Regen" col="37" />
+        <cell type="ui16" name="Critical" col="29" />
+        <cell type="ui16" name="Blockrate" col="27" />
+        <cell type="ui32" name="Unknown Value (Always 34)" col="33" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="128" />
+        <cell type="ui16" name="Magic Power" col="31" />
+        <cell type="ui16" name="Magic Resist" col="32" />
+        <cell type="ui32" name="??" col="129" />
+        <cell type="ui32" name="??" col="130" />
+        <cell type="ui32" name="??" col="131" />
+        <cell type="ui32" name="??" col="132" />
+        <cell type="ui32" name="??" col="133" />
+        <cell type="ui32" name="??" col="134" />
+        <cell type="ui32" name="??" col="135" />
+        <cell type="ui32" name="??" col="114" />
+        <cell type="ui32" name="??" col="115" />
+        <cell type="ui32" name="??" col="116" />
+        <cell type="ui32" name="??" col="117" />
+        <cell type="ui32" name="??" col="125" />
+      </cells>
+    </structure>
+    <replacements>
+      <replacement id="1">
+        <elem to="X" from="0" />
+        <elem to="O" from="1" />
+      </replacement>
+      <replacement id="2">
+        <elem to="Siege" from="0" />
+        <elem to="Warrior" from="1" />
+        <elem to="Defender" from="2" />
+        <elem to="Mage" from="3" />
+        <elem to="Acolyte" from="4" />
+        <elem to="Rogue" from="5" />
+        <elem to="BG" from="6" />
+        <elem to="Summon" from="7" />
+        <elem to="Structure" from="8" />
+        <elem to="Named" from="9" />
+        <elem to="Chief" from="10" />
+        <elem to="Object" from="11" />
+        <elem to="Guard" from="12" />
+      </replacement>
+    </replacements>
+  </file>
+  <file name="MonsterProtoType" version="1700">
+    <structure>
+      <cells size="552" hascolumns="1">
+        <cell type="ui32" name="Unknown Value (Always 0)" col="98" />
+        <cell type="float" name="Unknown Float (Correct Placement)" col="9" multiplier="100" />
+        <cell type="ui32" name="Unknown Value (Always 8)" col="" val="8" hide="1" />
+        <cell type="ui32" name="Respawn Area(?) (Correct Placement)" col="8" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="93" />
+        <cell type="float" name="Unknown Float Value  (Correct Placement)" col="11" multiplier="100" />
+        <cell type="ui32" name="Unknown Value (Always 1)" col="99" />
+        <cell type="ui32" name="Respawn Area Again(?) (Correct Placement)" col="10" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="119" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="94" />
+        <cell type="ui32" name="Unknown Value (Always 2)" col="" val="2" hide="1" />
+        <cell type="ui32" name="Unknown Value (Relates to col #12 (Correct Placement))" col="13" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="126" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="118" />
+        <cell type="ui32" name="Unknown Value (Always 24)" col="" val="24" hide="1" />
+        <cell type="ui32" name="Unknown Value (Relates to col #13) (Correct Placement)" col="12" />
+        <cell type="char[64]" name="Name" col="2" />
+        <cell type="char[32]" name="Model" col="3" />
+        <cell type="float" name="Possibly Movement Related" col="14" />
+        <cell type="float" name="Possibly Movement Related" col="15" />
+        <cell type="float" name="Possibly Movement Related" col="16" />
+        <cell type="float" name="Possibly Movement Related" col="17" />
+        <cell type="ui16" name="SpecialDrop #1" col="55" />
+        <cell type="ui16" name="SpecialDrop #2" col="56" />
+        <cell type="ui16" name="SpecialDrop #3" col="57" />
+        <cell type="ui16" name="SpecialDrop #4" col="58" />
+        <cell type="ui16" name="SpecialDrop #5" col="59" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="127" />
+        <cell type="ui32" name="Droprate SpecialDrop #1" col="60" />
+        <cell type="ui32" name="Droprate SpecialDrop #2" col="62" />
+        <cell type="ui32" name="Droprate SpecialDrop #3" col="63" />
+        <cell type="ui32" name="Droprate SpecialDrop #4" col="64" />
+        <cell type="ui32" name="Droprate SpecialDrop #5" col="65" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="66" />
+        <cell type="ui32" name="UUnknown Value (Droprate of something)" col="68" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="69" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="67" />
+        <cell type="ui32" name="Unknown Value (Droprate of something)" col="61" />
+        <cell type="ui32" name="Stone of Oblivion Droprate" col="70" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="71" />
+        <cell type="ui32" name="F Equipment Droprate" col="72" />
+        <cell type="ui32" name="D Equipment Droprate" col="73" />
+        <cell type="ui32" name="C Equipment Droprate" col="74" />
+        <cell type="ui32" name="B Equipment Droprate" col="75" />
+        <cell type="ui32" name="A Equipment Droprate" col="76" />
+        <cell type="ui32" name="F Helmet Droprate" col="77" />
+        <cell type="ui32" name="D Helmet Droprate" col="78" />
+        <cell type="ui32" name="C Helmet Droprate" col="79" />
+        <cell type="ui32" name="B Helmet Droprate" col="80" />
+        <cell type="ui32" name="A Helmet Droprate" col="81" />
+        <cell type="ui32" name="Boots/Gloves Droprate" col="82" />
+        <cell type="ui32" name="F Rings Droprate" col="83" />
+        <cell type="ui32" name="D Rings Droprate" col="84" />
+        <cell type="ui32" name="C Rings Droprate" col="85" />
+        <cell type="ui32" name="B Rings Droprate" col="86" />
+        <cell type="ui32" name="A Rings Droprate" col="87" />
+        <cell type="ui32" name="F Necklace Droprate" col="88" />
+        <cell type="ui32" name="D Necklace Droprate" col="89" />
+        <cell type="ui32" name="C Necklace Droprate" col="90" />
+        <cell type="ui32" name="B Necklace Droprate" col="91" />
+        <cell type="ui32" name="A Necklace Droprate" col="92" />
+
+        <cell type="ui32" name="Unknown Value (Always 0)" col="97" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="30" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="100" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="122" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="96" />
+        <cell type="ui32" name="Unknown Value (Correct Placement)" col="28" />
+        <cell type="ui32" name="Unknown Value (Always 257)" col="" val="257" hide="1" />
+
+        <cell type="ui32" name="ID" col="1" />
+        <cell type="ui32" name="Spawn Time" col="54" />
+        <cell type="float" name="Scale size of model (float)" col="38" />
+        <cell type="float" name="Unknown (float) (Correct Placement)" col="19" />
+        <cell type="ui16" name="Unknown Value (Correct Placement)" col="18" />
+        <cell type="byte" name="Monster Class" col="6" replace="2" />
+        <cell type="byte" name="Unknown Value (Correct Placement)" col="39" />
+        <cell type="byte" name="Monster Type (0 normal - 2/5 miniboss - 20 boss)" col="44" />
+        <cell type="byte" name="Boss Toggle (On for miniboss,boss / Off for rest)" col="43" replace="1" />
+        <cell type="ui16" name="Nation (0=Neutral,1=KR,2=MK - Used for statues/guards otherwise 0)" col="5" />
+        <cell type="ui16" name="Skill Related (int)" col="45" />
+        <cell type="ui16" name="Skill #1" col="46" hex="1" />
+        <cell type="ui16" name="Skill #2" col="47" hex="1" />
+        <cell type="ui16" name="Skill #3" col="48" hex="1" />
+        <cell type="ui16" name="Skill #4" col="49" hex="1" />
+        <cell type="ui16" name="Skill #5" col="50" hex="1" />
+        <cell type="byte" name="Skill Related (int)" col="51" />
+        <cell type="byte" name="Skill Related (int)" col="52" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="123" />
+        <cell type="float" name="Unknown Float (Seems level related)" col="53" />
+        <cell type="byte" name="Unknown On/Off Toggle (On for Siege / Off for rest)" col="7" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (On for statues / Off for rest)" col="40" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (Off for siege, summon / On for rest)" col="41" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (Correct Placement)" col="42" replace="1" />
+        <cell type="byte" name="Unknown On/Off Toggle (Off for Siege, Object Types / On for rest)" col="4" replace="1" />
+        <cell type="byte" name="Unknown Value (Always 0)" col="121" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="120" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="101" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="102" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="103" />
+        <cell type="ui32" name="Unknown Value (Siege Type Only)" col="104" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="105" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="106" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="107" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="108" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="109" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="110" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="111" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="112" />
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="113" />
+        <!-- 1700 -->
+        <cell type="float" name="Unknown Float (0.1->1.0)" col="136" />
+        
+        <cell type="ui32" name="Base XP" col="20" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="124" />
+        <cell type="ui32" name="Mob Level" col="21" />
+        <cell type="ui32" name="Unknown Value (Always 0)" col="95" />
+        <cell type="ui16" name="Min Dam" col="22" />
+        <cell type="ui16" name="Max Dam" col="23" />
+        <cell type="ui16" name="Defense" col="25" />
+        <cell type="ui16" name="Hit Rate" col="24" />
+        <cell type="ui16" name="Evade" col="26" />
+        <cell type="ui16" name="HP" col="34" />
+        <cell type="ui16" name="HP Regen" col="36" />
+        <cell type="ui16" name="MP" col="35" />
+        <cell type="ui16" name="MP Regen" col="37" />
+        <cell type="ui16" name="Critical" col="29" />
+        <cell type="ui16" name="Blockrate" col="27" />
+        <cell type="ui32" name="Unknown Value (Always 34) (Correct Placement)" col="33" />
+        <cell type="ui16" name="Unknown Value (Always 0)" col="128" />
+        <cell type="ui16" name="Magic Power" col="31" />
+        <cell type="ui16" name="Magic Resist" col="32" />
+        <cell type="ui32" name="??" col="129" />
+        <cell type="ui32" name="??" col="130" />
+        <cell type="ui32" name="??" col="131" />
+        <cell type="ui32" name="??" col="132" />
+        <cell type="ui32" name="??" col="133" />
+        <cell type="ui32" name="??" col="134" />
+        <cell type="ui32" name="??" col="135" />
+        <cell type="ui32" name="??" col="114" />
+        <cell type="ui32" name="??" col="115" />
+        <cell type="ui32" name="??" col="116" />
+        <cell type="ui32" name="??" col="117" />
+        <cell type="ui32" name="??" col="125" />
+      </cells>
+    </structure>
+    <replacements>
+      <replacement id="1">
+        <elem to="X" from="0" />
+        <elem to="O" from="1" />
+      </replacement>
+      <replacement id="2">
+        <elem to="Siege" from="0" />
+        <elem to="Warrior" from="1" />
+        <elem to="Defender" from="2" />
+        <elem to="Mage" from="3" />
+        <elem to="Acolyte" from="4" />
+        <elem to="Rogue" from="5" />
+        <elem to="BG" from="6" />
+        <elem to="Summon" from="7" />
+        <elem to="Structure" from="8" />
+        <elem to="Named" from="9" />
+        <elem to="Chief" from="10" />
+        <elem to="Object" from="11" />
+        <elem to="Guard" from="12" />
+      </replacement>
+    </replacements>
+  </file>
+  <file name="MineralVein">
+  </file>
+</gsf>

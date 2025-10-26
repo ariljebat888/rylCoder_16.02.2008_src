@@ -1,0 +1,12 @@
+obj\Release\ResolveAssemblyReference.cache
+bin\Release\Support.dll
+bin\Release\Support.pdb
+obj\Release\Support.dll
+obj\Release\Support.pdb
+bin\Debug\Support.dll
+bin\Debug\Support.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Support.Properties.Resources.resources
+obj\Debug\Support.csproj.GenerateResource.Cache
+obj\Debug\Support.dll
+obj\Debug\Support.pdb

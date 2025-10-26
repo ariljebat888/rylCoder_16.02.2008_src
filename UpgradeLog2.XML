@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="mcfCoder">
+</Property><Property Name="Solution File" Value="C:\Users\ArilRYL2\Desktop\rylCoder_16.02.2008_src\rylCoder_16.02.2008_src\mcfCoder.sln">
+</Property><Property Name="User Options File" Value="C:\Users\ArilRYL2\Desktop\rylCoder_16.02.2008_src\rylCoder_16.02.2008_src\mcfCoder.suo">
+</Property><Property Name="Date" Value="Saturday, December 28, 2024">
+</Property><Property Name="Time" Value="1:31 AM">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="2" Project="" Source="mcfCoder.sln" Description="Error creating backup file: C:\Users\ArilRYL2\Desktop\rylCoder_16.02.2008_src\rylCoder_16.02.2008_src\mcfCoder.sln.old">
+</Event><Event ErrorLevel="2" Project="" Source="mcfCoder.suo" Description="Error creating backup file: C:\Users\ArilRYL2\Desktop\rylCoder_16.02.2008_src\rylCoder_16.02.2008_src\mcfCoder.suo.old">
+</Event><Event ErrorLevel="0" Project="rylCoder" Source="rylCoder.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="rylCoder" Source="rylCoder.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="Wrapper" Source="addons\Wrapper\Wrapper.vcxproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="IL" Source="addons\DevIL\src-IL\msvc8\IL.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="MiniLZO" Source="addons\MiniLZO\MiniLZO.vcxproj" Description="No Conversion Required">
+</Event></UpgradeLog>

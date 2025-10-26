@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+rylCoder
+</name>
+</assembly>
+<members>
+<member name="P:rylCoder.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:rylCoder.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:rylCoder.My.Resources.Resources.gsfStruct">
+	<summary>
+  Looks up a localized string similar to &lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;!-- 
+################################################
+##                                            ##
+##         RYL mcf &amp; gsf file editor          ##
+##                                            ##
+##   (C) 2006 &amp; 2007 AlphA                    ##
+##                                            ##
+##   This source is for private development.  ##
+##   You can have this source only with the   ##
+##   owners permission.                       ##
+##             [rest of string was truncated]";.
+</summary>
+</member><member name="P:rylCoder.My.Resources.Resources.xmlFunctionSyntax">
+	<summary>
+  Looks up a localized string similar to &lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;syntax&gt;
+  &lt;ryl version="2"&gt;
+    &lt;mcf type="1"&gt;
+      &lt;!-- NPCscript.mcf --&gt;
+      &lt;func name="AddItem" parcount="5" desc="Add a new item to NPC shop"&gt;
+        &lt;param type="int" name="NPC id" desc="The NPC ID to who's shop to add current item" /&gt;
+        &lt;param type="int" name="Shop" desc="If the NPC has multiple shops then each shop has its id starting from 0. Default is 0. Reference to AddPopup();" /&gt;
+        &lt;param type="int" name="Tab" desc="Tab ID. From 0 [rest of string was truncated]";.
+</summary>
+</member><member name="T:rylCoder.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

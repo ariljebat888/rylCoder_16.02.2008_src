@@ -1,0 +1,318 @@
+Public Class CMcfCoder
+#Region "Data"
+    Private Shared table()() As Byte = _
+        { _
+            New Byte() {&HAC, &H29, &H55, &H42}, _
+            New Byte() {&HAD, &H28, &H54, &H43}, _
+            New Byte() {&HAE, &H2B, &H57, &H40}, _
+            New Byte() {&HAF, &H2A, &H56, &H41}, _
+            New Byte() {&HA8, &H2D, &H51, &H46}, _
+            New Byte() {&HA9, &H2C, &H50, &H47}, _
+            New Byte() {&HAA, &H2F, &H53, &H44}, _
+            New Byte() {&HAB, &H2E, &H52, &H45}, _
+            New Byte() {&HA4, &H21, &H5D, &H4A}, _
+            New Byte() {&HA5, &H20, &H5C, &H4B}, _
+            New Byte() {&HA6, &H23, &H5F, &H48}, _
+            New Byte() {&HA7, &H22, &H5E, &H49}, _
+            New Byte() {&HA0, &H25, &H59, &H4E}, _
+            New Byte() {&HA1, &H24, &H58, &H4F}, _
+            New Byte() {&HA2, &H27, &H5B, &H4C}, _
+            New Byte() {&HA3, &H26, &H5A, &H4D}, _
+            New Byte() {&HBC, &H39, &H45, &H52}, _
+            New Byte() {&HBD, &H38, &H44, &H53}, _
+            New Byte() {&HBE, &H3B, &H47, &H50}, _
+            New Byte() {&HBF, &H3A, &H46, &H51}, _
+            New Byte() {&HB8, &H3D, &H41, &H56}, _
+            New Byte() {&HB9, &H3C, &H40, &H57}, _
+            New Byte() {&HBA, &H3F, &H43, &H54}, _
+            New Byte() {&HBB, &H3E, &H42, &H55}, _
+            New Byte() {&HB4, &H31, &H4D, &H5A}, _
+            New Byte() {&HB5, &H30, &H4C, &H5B}, _
+            New Byte() {&HB6, &H33, &H4F, &H58}, _
+            New Byte() {&HB7, &H32, &H4E, &H59}, _
+            New Byte() {&HB0, &H35, &H49, &H5E}, _
+            New Byte() {&HB1, &H34, &H48, &H5F}, _
+            New Byte() {&HB2, &H37, &H4B, &H5C}, _
+            New Byte() {&HB3, &H36, &H4A, &H5D}, _
+            New Byte() {&H8C, &H9, &H75, &H62}, _
+            New Byte() {&H8D, &H8, &H74, &H63}, _
+            New Byte() {&H8E, &HB, &H77, &H60}, _
+            New Byte() {&H8F, &HA, &H76, &H61}, _
+            New Byte() {&H88, &HD, &H71, &H66}, _
+            New Byte() {&H89, &HC, &H70, &H67}, _
+            New Byte() {&H8A, &HF, &H73, &H64}, _
+            New Byte() {&H8B, &HE, &H72, &H65}, _
+            New Byte() {&H84, &H1, &H7D, &H6A}, _
+            New Byte() {&H85, &H0, &H7C, &H6B}, _
+            New Byte() {&H86, &H3, &H7F, &H68}, _
+            New Byte() {&H87, &H2, &H7E, &H69}, _
+            New Byte() {&H80, &H5, &H79, &H6E}, _
+            New Byte() {&H81, &H4, &H78, &H6F}, _
+            New Byte() {&H82, &H7, &H7B, &H6C}, _
+            New Byte() {&H83, &H6, &H7A, &H6D}, _
+            New Byte() {&H9C, &H19, &H65, &H72}, _
+            New Byte() {&H9D, &H18, &H64, &H73}, _
+            New Byte() {&H9E, &H1B, &H67, &H70}, _
+            New Byte() {&H9F, &H1A, &H66, &H71}, _
+            New Byte() {&H98, &H1D, &H61, &H76}, _
+            New Byte() {&H99, &H1C, &H60, &H77}, _
+            New Byte() {&H9A, &H1F, &H63, &H74}, _
+            New Byte() {&H9B, &H1E, &H62, &H75}, _
+            New Byte() {&H94, &H11, &H6D, &H7A}, _
+            New Byte() {&H95, &H10, &H6C, &H7B}, _
+            New Byte() {&H96, &H13, &H6F, &H78}, _
+            New Byte() {&H97, &H12, &H6E, &H79}, _
+            New Byte() {&H90, &H15, &H69, &H7E}, _
+            New Byte() {&H91, &H14, &H68, &H7F}, _
+            New Byte() {&H92, &H17, &H6B, &H7C}, _
+            New Byte() {&H93, &H16, &H6A, &H7D}, _
+            New Byte() {&HEC, &H69, &H15, &H2}, _
+            New Byte() {&HED, &H68, &H14, &H3}, _
+            New Byte() {&HEE, &H6B, &H17, &H0}, _
+            New Byte() {&HEF, &H6A, &H16, &H1}, _
+            New Byte() {&HE8, &H6D, &H11, &H6}, _
+            New Byte() {&HE9, &H6C, &H10, &H7}, _
+            New Byte() {&HEA, &H6F, &H13, &H4}, _
+            New Byte() {&HEB, &H6E, &H12, &H5}, _
+            New Byte() {&HE4, &H61, &H1D, &HA}, _
+            New Byte() {&HE5, &H60, &H1C, &HB}, _
+            New Byte() {&HE6, &H63, &H1F, &H8}, _
+            New Byte() {&HE7, &H62, &H1E, &H9}, _
+            New Byte() {&HE0, &H65, &H19, &HE}, _
+            New Byte() {&HE1, &H64, &H18, &HF}, _
+            New Byte() {&HE2, &H67, &H1B, &HC}, _
+            New Byte() {&HE3, &H66, &H1A, &HD}, _
+            New Byte() {&HFC, &H79, &H5, &H12}, _
+            New Byte() {&HFD, &H78, &H4, &H13}, _
+            New Byte() {&HFE, &H7B, &H7, &H10}, _
+            New Byte() {&HFF, &H7A, &H6, &H11}, _
+            New Byte() {&HF8, &H7D, &H1, &H16}, _
+            New Byte() {&HF9, &H7C, &H0, &H17}, _
+            New Byte() {&HFA, &H7F, &H3, &H14}, _
+            New Byte() {&HFB, &H7E, &H2, &H15}, _
+            New Byte() {&HF4, &H71, &HD, &H1A}, _
+            New Byte() {&HF5, &H70, &HC, &H1B}, _
+            New Byte() {&HF6, &H73, &HF, &H18}, _
+            New Byte() {&HF7, &H72, &HE, &H19}, _
+            New Byte() {&HF0, &H75, &H9, &H1E}, _
+            New Byte() {&HF1, &H74, &H8, &H1F}, _
+            New Byte() {&HF2, &H77, &HB, &H1C}, _
+            New Byte() {&HF3, &H76, &HA, &H1D}, _
+            New Byte() {&HCC, &H49, &H35, &H22}, _
+            New Byte() {&HCD, &H48, &H34, &H23}, _
+            New Byte() {&HCE, &H4B, &H37, &H20}, _
+            New Byte() {&HCF, &H4A, &H36, &H21}, _
+            New Byte() {&HC8, &H4D, &H31, &H26}, _
+            New Byte() {&HC9, &H4C, &H30, &H27}, _
+            New Byte() {&HCA, &H4F, &H33, &H24}, _
+            New Byte() {&HCB, &H4E, &H32, &H25}, _
+            New Byte() {&HC4, &H41, &H3D, &H2A}, _
+            New Byte() {&HC5, &H40, &H3C, &H2B}, _
+            New Byte() {&HC6, &H43, &H3F, &H28}, _
+            New Byte() {&HC7, &H42, &H3E, &H29}, _
+            New Byte() {&HC0, &H45, &H39, &H2E}, _
+            New Byte() {&HC1, &H44, &H38, &H2F}, _
+            New Byte() {&HC2, &H47, &H3B, &H2C}, _
+            New Byte() {&HC3, &H46, &H3A, &H2D}, _
+            New Byte() {&HDC, &H59, &H25, &H32}, _
+            New Byte() {&HDD, &H58, &H24, &H33}, _
+            New Byte() {&HDE, &H5B, &H27, &H30}, _
+            New Byte() {&HDF, &H5A, &H26, &H31}, _
+            New Byte() {&HD8, &H5D, &H21, &H36}, _
+            New Byte() {&HD9, &H5C, &H20, &H37}, _
+            New Byte() {&HDA, &H5F, &H23, &H34}, _
+            New Byte() {&HDB, &H5E, &H22, &H35}, _
+            New Byte() {&HD4, &H51, &H2D, &H3A}, _
+            New Byte() {&HD5, &H50, &H2C, &H3B}, _
+            New Byte() {&HD6, &H53, &H2F, &H38}, _
+            New Byte() {&HD7, &H52, &H2E, &H39}, _
+            New Byte() {&HD0, &H55, &H29, &H3E}, _
+            New Byte() {&HD1, &H54, &H28, &H3F}, _
+            New Byte() {&HD2, &H57, &H2B, &H3C}, _
+            New Byte() {&HD3, &H56, &H2A, &H3D}, _
+            New Byte() {&H2C, &HA9, &HD5, &HC2}, _
+            New Byte() {&H2D, &HA8, &HD4, &HC3}, _
+            New Byte() {&H2E, &HAB, &HD7, &HC0}, _
+            New Byte() {&H2F, &HAA, &HD6, &HC1}, _
+            New Byte() {&H28, &HAD, &HD1, &HC6}, _
+            New Byte() {&H29, &HAC, &HD0, &HC7}, _
+            New Byte() {&H2A, &HAF, &HD3, &HC4}, _
+            New Byte() {&H2B, &HAE, &HD2, &HC5}, _
+            New Byte() {&H24, &HA1, &HDD, &HCA}, _
+            New Byte() {&H25, &HA0, &HDC, &HCB}, _
+            New Byte() {&H26, &HA3, &HDF, &HC8}, _
+            New Byte() {&H27, &HA2, &HDE, &HC9}, _
+            New Byte() {&H20, &HA5, &HD9, &HCE}, _
+            New Byte() {&H21, &HA4, &HD8, &HCF}, _
+            New Byte() {&H22, &HA7, &HDB, &HCC}, _
+            New Byte() {&H23, &HA6, &HDA, &HCD}, _
+            New Byte() {&H3C, &HB9, &HC5, &HD2}, _
+            New Byte() {&H3D, &HB8, &HC4, &HD3}, _
+            New Byte() {&H3E, &HBB, &HC7, &HD0}, _
+            New Byte() {&H3F, &HBA, &HC6, &HD1}, _
+            New Byte() {&H38, &HBD, &HC1, &HD6}, _
+            New Byte() {&H39, &HBC, &HC0, &HD7}, _
+            New Byte() {&H3A, &HBF, &HC3, &HD4}, _
+            New Byte() {&H3B, &HBE, &HC2, &HD5}, _
+            New Byte() {&H34, &HB1, &HCD, &HDA}, _
+            New Byte() {&H35, &HB0, &HCC, &HDB}, _
+            New Byte() {&H36, &HB3, &HCF, &HD8}, _
+            New Byte() {&H37, &HB2, &HCE, &HD9}, _
+            New Byte() {&H30, &HB5, &HC9, &HDE}, _
+            New Byte() {&H31, &HB4, &HC8, &HDF}, _
+            New Byte() {&H32, &HB7, &HCB, &HDC}, _
+            New Byte() {&H33, &HB6, &HCA, &HDD}, _
+            New Byte() {&HC, &H89, &HF5, &HE2}, _
+            New Byte() {&HD, &H88, &HF4, &HE3}, _
+            New Byte() {&HE, &H8B, &HF7, &HE0}, _
+            New Byte() {&HF, &H8A, &HF6, &HE1}, _
+            New Byte() {&H8, &H8D, &HF1, &HE6}, _
+            New Byte() {&H9, &H8C, &HF0, &HE7}, _
+            New Byte() {&HA, &H8F, &HF3, &HE4}, _
+            New Byte() {&HB, &H8E, &HF2, &HE5}, _
+            New Byte() {&H4, &H81, &HFD, &HEA}, _
+            New Byte() {&H5, &H80, &HFC, &HEB}, _
+            New Byte() {&H6, &H83, &HFF, &HE8}, _
+            New Byte() {&H7, &H82, &HFE, &HE9}, _
+            New Byte() {&H0, &H85, &HF9, &HEE}, _
+            New Byte() {&H1, &H84, &HF8, &HEF}, _
+            New Byte() {&H2, &H87, &HFB, &HEC}, _
+            New Byte() {&H3, &H86, &HFA, &HED}, _
+            New Byte() {&H1C, &H99, &HE5, &HF2}, _
+            New Byte() {&H1D, &H98, &HE4, &HF3}, _
+            New Byte() {&H1E, &H9B, &HE7, &HF0}, _
+            New Byte() {&H1F, &H9A, &HE6, &HF1}, _
+            New Byte() {&H18, &H9D, &HE1, &HF6}, _
+            New Byte() {&H19, &H9C, &HE0, &HF7}, _
+            New Byte() {&H1A, &H9F, &HE3, &HF4}, _
+            New Byte() {&H1B, &H9E, &HE2, &HF5}, _
+            New Byte() {&H14, &H91, &HED, &HFA}, _
+            New Byte() {&H15, &H90, &HEC, &HFB}, _
+            New Byte() {&H16, &H93, &HEF, &HF8}, _
+            New Byte() {&H17, &H92, &HEE, &HF9}, _
+            New Byte() {&H10, &H95, &HE9, &HFE}, _
+            New Byte() {&H11, &H94, &HE8, &HFF}, _
+            New Byte() {&H12, &H97, &HEB, &HFC}, _
+            New Byte() {&H13, &H96, &HEA, &HFD}, _
+            New Byte() {&H6C, &HE9, &H95, &H82}, _
+            New Byte() {&H6D, &HE8, &H94, &H83}, _
+            New Byte() {&H6E, &HEB, &H97, &H80}, _
+            New Byte() {&H6F, &HEA, &H96, &H81}, _
+            New Byte() {&H68, &HED, &H91, &H86}, _
+            New Byte() {&H69, &HEC, &H90, &H87}, _
+            New Byte() {&H6A, &HEF, &H93, &H84}, _
+            New Byte() {&H6B, &HEE, &H92, &H85}, _
+            New Byte() {&H64, &HE1, &H9D, &H8A}, _
+            New Byte() {&H65, &HE0, &H9C, &H8B}, _
+            New Byte() {&H66, &HE3, &H9F, &H88}, _
+            New Byte() {&H67, &HE2, &H9E, &H89}, _
+            New Byte() {&H60, &HE5, &H99, &H8E}, _
+            New Byte() {&H61, &HE4, &H98, &H8F}, _
+            New Byte() {&H62, &HE7, &H9B, &H8C}, _
+            New Byte() {&H63, &HE6, &H9A, &H8D}, _
+            New Byte() {&H7C, &HF9, &H85, &H92}, _
+            New Byte() {&H7D, &HF8, &H84, &H93}, _
+            New Byte() {&H7E, &HFB, &H87, &H90}, _
+            New Byte() {&H7F, &HFA, &H86, &H91}, _
+            New Byte() {&H78, &HFD, &H81, &H96}, _
+            New Byte() {&H79, &HFC, &H80, &H97}, _
+            New Byte() {&H7A, &HFF, &H83, &H94}, _
+            New Byte() {&H7B, &HFE, &H82, &H95}, _
+            New Byte() {&H74, &HF1, &H8D, &H9A}, _
+            New Byte() {&H75, &HF0, &H8C, &H9B}, _
+            New Byte() {&H76, &HF3, &H8F, &H98}, _
+            New Byte() {&H77, &HF2, &H8E, &H99}, _
+            New Byte() {&H70, &HF5, &H89, &H9E}, _
+            New Byte() {&H71, &HF4, &H88, &H9F}, _
+            New Byte() {&H72, &HF7, &H8B, &H9C}, _
+            New Byte() {&H73, &HF6, &H8A, &H9D}, _
+            New Byte() {&H4C, &HC9, &HB5, &HA2}, _
+            New Byte() {&H4D, &HC8, &HB4, &HA3}, _
+            New Byte() {&H4E, &HCB, &HB7, &HA0}, _
+            New Byte() {&H4F, &HCA, &HB6, &HA1}, _
+            New Byte() {&H48, &HCD, &HB1, &HA6}, _
+            New Byte() {&H49, &HCC, &HB0, &HA7}, _
+            New Byte() {&H4A, &HCF, &HB3, &HA4}, _
+            New Byte() {&H4B, &HCE, &HB2, &HA5}, _
+            New Byte() {&H44, &HC1, &HBD, &HAA}, _
+            New Byte() {&H45, &HC0, &HBC, &HAB}, _
+            New Byte() {&H46, &HC3, &HBF, &HA8}, _
+            New Byte() {&H47, &HC2, &HBE, &HA9}, _
+            New Byte() {&H40, &HC5, &HB9, &HAE}, _
+            New Byte() {&H41, &HC4, &HB8, &HAF}, _
+            New Byte() {&H42, &HC7, &HBB, &HAC}, _
+            New Byte() {&H43, &HC6, &HBA, &HAD}, _
+            New Byte() {&H5C, &HD9, &HA5, &HB2}, _
+            New Byte() {&H5D, &HD8, &HA4, &HB3}, _
+            New Byte() {&H5E, &HDB, &HA7, &HB0}, _
+            New Byte() {&H5F, &HDA, &HA6, &HB1}, _
+            New Byte() {&H58, &HDD, &HA1, &HB6}, _
+            New Byte() {&H59, &HDC, &HA0, &HB7}, _
+            New Byte() {&H5A, &HDF, &HA3, &HB4}, _
+            New Byte() {&H5B, &HDE, &HA2, &HB5}, _
+            New Byte() {&H54, &HD1, &HAD, &HBA}, _
+            New Byte() {&H55, &HD0, &HAC, &HBB}, _
+            New Byte() {&H56, &HD3, &HAF, &HB8}, _
+            New Byte() {&H57, &HD2, &HAE, &HB9}, _
+            New Byte() {&H50, &HD5, &HA9, &HBE}, _
+            New Byte() {&H51, &HD4, &HA8, &HBF}, _
+            New Byte() {&H52, &HD7, &HAB, &HBC}, _
+            New Byte() {&H53, &HD6, &HAA, &HBD} _
+        }
+#End Region
+    Public Enum Col
+        EFirstCol = 0
+        ESecondCol = 1
+        EThirdCol = 2
+        EForthCol = 3
+    End Enum
+
+    Public Shared Function DeCryptByte(ByVal num As Byte, Optional ByVal column As Col = Col.EFirstCol) As Byte
+        Dim i As Byte = 0
+        For Each t As Byte() In table
+            If Array.IndexOf(t, num) = column Then Return i
+            i += 1
+        Next
+        Debug.WriteLine("Error decrypting &H" & Hex(num) & " in column " & printCol(column))
+        Return 0
+    End Function
+
+    Public Shared Function EnCryptByte(ByVal num As Byte, Optional ByVal column As Col = Col.EFirstCol) As Byte
+        Return table(num)(column)
+    End Function
+
+    Public Shared Function DeCryptArea(ByRef data As Byte(), Optional ByVal startCol As Col = Col.EFirstCol) As Byte()
+        Dim out(data.Length) As Byte
+        Dim pos As Integer = startCol
+        Dim i As Long = 0
+        For Each b As Byte In data
+            out(i) = DeCryptByte(b, pos)
+            pos += 1
+            i += 1
+            If pos > 3 Then pos = 0
+        Next
+        Return out
+    End Function
+
+    Public Shared Function EnCryptArea(ByRef data As Byte(), Optional ByVal startCol As Col = Col.EFirstCol) As Byte()
+        Dim out(data.Length) As Byte
+        Dim pos As Integer = startCol
+        Dim i As Long = 0
+        For Each b As Byte In data
+            out(i) = EnCryptByte(b, pos)
+            pos += 1
+            i += 1
+            If pos > 3 Then pos = 0
+        Next
+        Return out
+    End Function
+
+    Private Shared Function printCol(ByVal column As Col) As Integer
+        Select Case column
+            Case Col.EFirstCol : Return 0
+            Case Col.ESecondCol : Return 1
+            Case Col.EThirdCol : Return 2
+            Case Col.EForthCol : Return 3
+        End Select
+    End Function
+End Class

@@ -1,0 +1,18 @@
+﻿Build started 14.10.2011 13:17:30.
+     1>Project "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\MiniLZO\MiniLZO.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\MiniLZO.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IInclude /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D WIN32 /D _DEBUG /D _LIB /D _WINDOWS /D _USE_32BIT_TIME_T /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS- /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /wd4996 /wd4819 /wd4482 /analyze- /errorReport:prompt Src\minilzo.cpp
+         minilzo.cpp
+       Lib:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"Release\MiniLZO.lib" /NOLOGO /LTCG Release\minilzo.obj
+         MiniLZO.vcxproj -> C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\MiniLZO\Release\MiniLZO.lib
+       FinalizeBuildStatus:
+         Deleting file "Release\MiniLZO.unsuccessfulbuild".
+         Touching "Release\MiniLZO.lastbuildstate".
+     1>Done Building Project "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\MiniLZO\MiniLZO.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.19

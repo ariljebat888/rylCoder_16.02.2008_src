@@ -1,0 +1,22 @@
+﻿Build started 14.10.2011 13:17:31.
+     1>Project "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\Wrapper\Wrapper.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\Wrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../DevIL/include /I../MiniLZO/include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D NDEBUG /D IL_STATIC_LIB /D WIN32 /D _DEBUG /D _LIB /D _WINDOWS /D _USE_32BIT_TIME_T /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS- /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /wd4996 /wd4819 /wd4482 /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt AssemblyInfo.cpp Wrapper.cpp /clr:nostdlib 
+         AssemblyInfo.cpp
+         Wrapper.cpp
+     1>Wrapper.cpp(196): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../DevIL/include /I../MiniLZO/include /Zi /clr /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D NDEBUG /D IL_STATIC_LIB /D WIN32 /D _DEBUG /D _LIB /D _WINDOWS /D _USE_32BIT_TIME_T /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS- /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /wd4996 /wd4819 /wd4482 /analyze- /errorReport:prompt "C:\Users\Peter\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+     1>Project "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\Wrapper\Wrapper.vcxproj" (1) is building "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\DevIL\src-IL\msvc8\IL.vcxproj" (3:3) on node 3 (GetResolvedLinkLibs target(s)).
+     3>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(283,5): error MSB8013: This project doesn't contain the Configuration and Platform combination of Debug|Win32.
+     3>Done Building Project "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\DevIL\src-IL\msvc8\IL.vcxproj" (GetResolvedLinkLibs target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\Peter\Desktop\rylCoder_16.02.2008_src\addons\Wrapper\Wrapper.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.12
