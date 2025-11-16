@@ -1,12 +1,30 @@
 
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QTreeView, QGroupBox, QVBoxLayout, QLineEdit, QLabel, QFormLayout, QComboBox, QTabWidget, QTextEdit
 from npc_parser import NpcLineType
+from gsf_coder import GsfCoder
 
 
 class NpcEditor(QWidget):
     def __init__(self):
         super().__init__()
+        self.gsf_coder = GsfCoder()
         self.init_ui()
+
+    def open_gsf_file(self, file_path):
+        with open(file_path, 'rb') as f:
+            data = f.read()
+
+        decrypted_data = self.gsf_coder.decrypt(data)
+
+        file_name = os.path.basename(file_path)
+        file_type = os.path.splitext(file_name)[0]
+
+        # version should be detected or passed in
+        version = "1600" # default for now
+
+        structured_data = self.gsf_coder.data_to_struct(decrypted_data, file_type, version)
+
+        # we need to populate the editor with the structured_data
 
     def init_ui(self):
         main_layout = QHBoxLayout()
